@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>Tom Preston-Werner</title>
+ <link href="http://tom.preston-werner.com/atom.xml" rel="self"/>
+ <link href="http://tom.preston-werner.com/"/>
+ <updated>2011-03-17T09:36:12-04:00</updated>
+ <id>http://tom.preston-werner.com/</id>
+ <author>
+   <name>Tom Preston-Werner</name>
+   <email>tom@mojombo.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>Why SharePoint Share?</title>
+   <link href="http://tom.preston-werner.com/2009/05/26/why-sharepoint-share.html"/>
+   <updated>2009-05-26T00:00:00-04:00</updated>
+   <id>http://tom.preston-werner.com/2009/05/26/why-sharepoint-share</id>
+   <content type="html">&lt;p&gt;Recently &lt;a href=&quot;http://twitter.com/jthake&quot;&gt;Jeremy Thake&lt;/a&gt; asked why &lt;a href=&quot;http://www.sharepointshare.com&quot;&gt;SharePoint Share&lt;/a&gt; (which I &lt;a href=&quot;http://kaledavis.com/2009/05/20/sharepoint-share/&quot;&gt;introduced&lt;/a&gt; a week ago)?&lt;/p&gt;
+
+&lt;blockquote&gt;&lt;p&gt;&lt;a href=&quot;http://twitter.com/jthake&quot;&gt;jthake&lt;/a&gt; &lt;a href=&quot;http://twitter.com/sharepointshare&quot;&gt;@sharepointshare&lt;/a&gt; why should we use this over using diigo or del.icio.us? take a read of http://bit.ly/7ZG07 interested in ur thoughts&lt;/p&gt;&lt;/blockquote&gt;
+
+&lt;p&gt;It is a great question and one that I thought about before creating SharePoint Share. As Jermey and Joel &lt;a href=&quot;http://wss.made4the.net/archive/2009/05/09/help-the-sharepoint-community-out-of-the-twittersocial-bookmarking-blur.aspx&quot;&gt;point&lt;/a&gt; &lt;a href=&quot;http://www.sharepointjoel.com/Lists/Posts/Post.aspx?List=0cd1a63d-183c-4fc2-8320-ba5369008acb&amp;amp;ID=222&quot;&gt;out&lt;/a&gt;, there are several avenues to share information, so why create another? I found myself frustrated by my current SharePoint RSS feeds was the main reason. I will go into that in a minute, but first thought I would summarize the issues I see in SharePoint information I consume from the web (which I am sure is not unique to SharePoint): trending topics, personal, local, fire hose, cryptic, and lastly the barrier to entry.&lt;/p&gt;
+
+&lt;p&gt;In a page of my RSS feeds it is typical for me to see 30 to 50 percent of the same trending topic post like SP2 is released, the SP2 issue, or one of the conferences that is coming up. Another 20 to 30 percent seem personal in some way, and lastly 10 percent are local based, like a local user group meeting. You add that up and it is pretty dismal. Yet I still go to my RSS feeds because there can be great finds in there, things that I would never even have searched for, but after seeing I can use them immediately or know of them later when they are more applicable.&lt;/p&gt;
+
+&lt;p&gt;That was enough reason for me to start SharePoint Share, but I also looked at two of the current alternatives that I was aware of: Delicious and Twitter.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://delicious.com/tag/sharepoint&quot;&gt;Delicious&lt;/a&gt; and other bookmarking sites like &lt;a href=&quot;http://www.diigo.com/tag/sharepoint&quot;&gt;Diigo&lt;/a&gt; (which I hadn’t heard of until now) are great for a number of reasons. First they allow me to save my bookmarks to a common area so I can use them from anywhere. Second, they support tagging so I actually have a chance to find them again, and lastly they allow us to share them with others and aggregate what is popular and not. When searching for something specific I will always use Google first, but then I will try Delicious (especially if it is a common area within SharePoint like workflows or InfoPath). I don’t however view it as a daily/weekly resource because of two reasons: fire hose problem (100+ links posted just today), and most people don’t use the notes feature so you are often left with only a cryptic title. Added to this is the trending issues especially when you start looking at multiple services like Delicious and Diigo.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;http://twitter.com&quot;&gt;Twitter&lt;/a&gt; suffers from the same two issues. Instead of a fire hose though, it seems more like &lt;a href=&quot;http://en.wikipedia.org/wiki/Niagara_Falls&quot;&gt;Niagara Falls&lt;/a&gt;. And although 140 characters would often be better than a lot of titles on blogs, a link still is cryptic on what it exactly is and/or solves. I won’t rant on URL shorteners in this post, but I will say I don’t like not knowing where I am going to end up when I click on a link. Beyond that though, I am sure there is tons of great links and conversations on there about SharePoint, but I don’t see them because of the noise. From questions to rants, there are too many tweets marked even with the &lt;a href=&quot;http://search.twitter.com/search?q=%23sharepoint&quot;&gt;#sharepoint&lt;/a&gt; hash that don't add anything to the community. That is probably how Twitter is suppose to be, more of a dip your toes in every now and then, but either way you are still going to have to filter out the noise.&lt;/p&gt;
+
+&lt;p&gt;My goal for SharePoint Share is to avoid the problems of trending topics, personal, local, fire hose, and cryptic. The personal, local, and fire hose issues are pretty much solved automatically. Cryptic can be a hard line to walk as you don’t want to put too much information on a platform like SharePoint Share as then it would replace the actual article. I will modify post titles and descriptions as I see fit and add/remove tags as needed to help with this issue. Avoiding trending topics is probably the most difficult problem, and I don’t know if that is necessary a bad thing always. If the community wants those type of items posted then I don’t see a problem with having them on the site.&lt;/p&gt;
+
+&lt;p&gt;Another problem that I haven't mentioned yet is the barrier to entry. All the items above, whether it be a blog, Delicious bookmarks, or Twitter require an account. SharePoint Share does not. I think it is easy to see that most SharePoint administrators, developers, and end users don’t use these other tools to give back to the community, but I hope SharePoint Share gives them one avenue they can do that with by quickly adding content they find helpful or interesting without creating an account first.&lt;/p&gt;
+
+&lt;p&gt;In the end, I think all of these tools and resources solve different issues for different people and as a community each one has its place. I hope, between the issues it solves and some upcoming features that I plan to introduce, that SharePoint Share can add to the great SharePoint community.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>VMware Logo - 12 Signs You Are Too Big</title>
+   <link href="http://tom.preston-werner.com/2008/08/27/vmware-logo-12-signs-you-are-to-big.html"/>
+   <updated>2008-08-27T00:00:00-04:00</updated>
+   <id>http://tom.preston-werner.com/2008/08/27/vmware-logo-12-signs-you-are-to-big</id>
+   <content type="html">&lt;p&gt;I was downloading the VMware player today and noticed this &lt;a href=&quot;http://www.vmware.com/help/usage.html&quot;&gt;agreement&lt;/a&gt; just to download the logo to link back to their site.  How does stuff like this happen?&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;You may only display the VMware Player icon on your Web site as designated herein, and not in any other manner. It is your responsibility to ensure that the link is always an active link to the VMware Player product page or the VMware Player download page or such other successor VMware website.&lt;/li&gt;
+&lt;li&gt;The VMware Player icon must appear by itself on your web page and in accordance with the minimum spacing (the height of the Web icon) between each side of the icon.&lt;/li&gt;
+&lt;li&gt;You may not alter the VMware Player icon in any manner, including, but not limited to, size, proportions, colors, elements or otherwise distort its perspective or appearance.&lt;/li&gt;
+&lt;li&gt;You may not link to vmware.com from a Web site that is obscene or pornographic, or disparaging, defamatory, or libelous to VMware or any of its products.&lt;/li&gt;
+&lt;li&gt;Your use may not directly or indirectly imply VMware's sponsorship, affiliation, or endorsement of your product or service or present misleading information about VMware products or services.&lt;/li&gt;
+&lt;li&gt;Your use may not infringe any VMware intellectual property or other rights, may not violate any state or federal laws, and must comply with international IP laws.&lt;/li&gt;
+&lt;li&gt;You may not frame VMware content.&lt;/li&gt;
+&lt;li&gt;You may link to, but may not replicate, VMware content.&lt;/li&gt;
+&lt;li&gt;Your reference to VMware, its products, and its Web site must comply with the general trademark guidelines as specified in the VMware Branding Guidelines.&lt;/li&gt;
+&lt;li&gt;While you may use the Web icon as provided by these guidelines, you may not use the VMware corporate logo or any other VMware logo or graphic to link to VMware.com.&lt;/li&gt;
+&lt;li&gt;These guidelines do not grant permission to use any other VMware logos or trademarks.&lt;/li&gt;
+&lt;li&gt;VMware reserves the right in its sole discretion to terminate or modify your permission to display the VMware Player icon at any time.&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Links - "Some Favorite Sites, Vol 1"</title>
+   <link href="http://tom.preston-werner.com/2007/10/21/links-some-favorite-sites-vol-1.html"/>
+   <updated>2007-10-21T00:00:00-04:00</updated>
+   <id>http://tom.preston-werner.com/2007/10/21/links-some-favorite-sites-vol-1</id>
+   <content type="html">&lt;p&gt;Through the course of a day I browse to a lot of sites.  I bookmark a large number of those, and probably revisited a small portion of the sites using them.  Where does that leave me?  I don't really know...that would require more browsing.  So here is couple of the ones that I do look at on a weekly basis:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Coding Horror](http://www.codinghorror.com/blog/) - Daily articles about a full range of topics relating to programming and computer science.  A quick way to learn something new each day.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.alistapart.com/&quot;&gt;A List Apart&lt;/a&gt; - Great articles on design, development, and web standards. One of the top sites for this type of information.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.joelonsoftware.com/&quot;&gt;Joel on Software&lt;/a&gt; - Joel runs Fog Creek, a software company in NYC.  Lately his articles haven't been as useful to me...but his archives are gold.  He actually has two books published that are just reprints of his blog articles.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://xkcd.com&quot;&gt;XKCD&lt;/a&gt; - A webcomic of romance, sarcasm, math, and language.  You have to be a geek to enjoy these...I showed a couple to my wife and she didn't get any of them.  I guess that is a good thing.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.smashingmagazine.com/&quot;&gt;Smashing Magazine&lt;/a&gt; - Great daily finds on here, from free fonts to best designs.  Browse their archives for a quick way to get ideas on your next project.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://davidseah.com/&quot;&gt;David Seah&lt;/a&gt; - Hard to really describe the articles he writes, but if you are searching on how to be better at what ever you do I think they might be helpful for you.  Productivity, Printable CEO Series, design work and more just to list a couple.&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Incorrect syntax near 'WSSList' in dbSPSReporting.sql</title>
+   <link href="http://tom.preston-werner.com/2007/06/11/incorrect-syntax-near-wsslist-in-dbspsreportingsql.html"/>
+   <updated>2007-06-11T00:00:00-04:00</updated>
+   <id>http://tom.preston-werner.com/2007/06/11/incorrect-syntax-near-wsslist-in-dbspsreportingsql</id>
+   <content type="html">&lt;p&gt;Have you tried to use the &lt;a href=&quot;http://www.microsoft.com/downloads/details.aspx?familyid=d81722ce-408c-4fb6-a429-2a7ecd62f674&amp;amp;displaylang=en&quot;&gt;SQL Server 2005 Report Pack for SPS&lt;/a&gt;? I had used the previous version of this for SQL 2000 last year, but hadn't used it for a while. I remember having issues with the install of that previous version, and sure enough I had more issues this time as well.&lt;/p&gt;
+
+&lt;p&gt;Here is the error message you will see when you run the dbSPSReporting.sql script:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Msg 102, Level 15, State 1, Procedure usp_Insert_FactWSS, Line 57
+Incorrect syntax near 'WSSList'.
+Cannot add rows to sys.sql_dependencies for the stored procedure
+because it depends on the missing table 'usp_Insert_FactWSS'. The
+stored procedure will still be created; however, it cannot be
+successfully executed until the table exists.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The problem is there is a missing comma after WSSDoc nvarchar(255):&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;Create&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;table&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dbo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tblTempWSS_ToFactLoad&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WSSFactID&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bigint&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;identity&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;Primary&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;Key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SiteGUID&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uniqueidentifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebGUID&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uniqueidentifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;-- WSSDate datetime, -- Fix for Bug #: 403546 WSSDate smalldatetime, WSSTime nvarchar(8), --WSSUser nvarchar(150), --Fix for Bug #: 403546 WSSUser nvarchar(255), --WSSDoc nvarchar(50), --Fix for Bug #: 403546 WSSDoc nvarchar(255) WSSList uniqueidentifier&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;Simply add the comma before you run the SQL script and everything will work fine. I find it very ironic that the new bug is right below the &quot;Fix for Bug&quot; comment that dealt with the previous problems in the first version. Bugs often introduce other bugs, but you would think something released for a Windows administrator would be checked a little closer. &lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>The exception unknown software exception (a.k.a. SysFader)</title>
+   <link href="http://tom.preston-werner.com/2007/03/15/the-exception-unknown-software-exception.html"/>
+   <updated>2007-03-15T00:00:00-04:00</updated>
+   <id>http://tom.preston-werner.com/2007/03/15/the-exception-unknown-software-exception</id>
+   <content type="html">&lt;p&gt;&lt;strong&gt;Update 7/10/07&lt;/strong&gt;: kerwin left a comment about a new KB article and hotfix that Microsoft just released.  We tested it yesterday on a machine with both 2003 and 2007 Office components and it seemed to fix the error.  Note that although both the article and hotfix specify WSS 3.0 / MOSS 2007, it also should work with 2.0/2003 (which makes sense, this is a client issue). Thanks kerwin for the information and to all the other people who left helpful comments.&lt;/p&gt;
+
+&lt;p&gt;You have to enjoy that helpful IE7 error message right?  This past Monday I started getting an error everytime I tried to open an Office document from SharePoint 2003 (to be specific, a WSS 2.0 Team Site).&lt;/p&gt;
+
+&lt;p&gt;The exact error was:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;SysFader: iexplore.exe - Application Error : The exception
+unknown software exception (0xc06d007f) occurred in the
+application at location 0x7c812a5b.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After some searching, I found only one related link on SharePoint University that was close to what I was seeing.  It wasn't much help and basically said to reload XP, not the solution I was looking for.  I then started looking into the IE7 add-ons (Internet Options -&amp;gt; Programs -&amp;gt; Manage add-ons) and disabled the SharePoint ones I found.  That fixed it! Seems like the SharePoint OpenDocuments Class was causing the error.  With it disabled I was able to open the document, however it reduced the functionality of the drop down by removing the &quot;Edit with...&quot; option.&lt;/p&gt;
+
+&lt;p&gt;After a search for SharePoint OpenDocuments Class I found the answers in several blogs (Outlook by the sound, Shaune Donohue, and Michael Becker).  The issue is conflicting versions of the OWSSUPP.DLL file because you have both Office11 and Office12 installed.  You can check for these two folders in C:\Program Files\Microsoft Office.  I had both because I had installed Visio and Project 2007 while still running 2003 for the rest of the suite.  I renamed the Office12 version (once I am off of Office 2003 I will change this back) and enabled the add-on and everything works great.
+The funny part is none of these blogs mentioned the error message (maybe they were getting a different one?), so I couldn't find them on my initial search.  Hopefully this post will be the &quot;bridge&quot; for others who get this annoying error message so that you can find the easy fix.  The only question that remains is what changed to start causing this (I've had Visio 2007 installed for at least five months).  If I find the answer to that I will update this or if you know please leave a comment.   &lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Using CRM with a SQL named instance</title>
+   <link href="http://tom.preston-werner.com/2006/12/30/using-crm-with-a-sql-named-instance.html"/>
+   <updated>2006-12-30T00:00:00-05:00</updated>
+   <id>http://tom.preston-werner.com/2006/12/30/using-crm-with-a-sql-named-instance</id>
+   <content type="html">&lt;p&gt;If you want to use CRM 3.0 with a named SQL instance you first have to disable the Environmental Diagnostics Wizard (EDW).  How to do this?  I couldn't find a way except for a couple &lt;a title=&quot;Mid-Atlantic CRM&quot; href=&quot;http://blogs.msdn.com/midatlanticcrm/archive/2006/06/23/Name-your-Instance-SQL-Instance-that-is-in-Microsoft-CRM-3.aspx&quot;&gt;blogs&lt;/a&gt;/&lt;a title=&quot;CRM Newsgroup&quot; href=&quot;http://groups.google.com/group/microsoft.public.crm.deployment/browse_thread/thread/31c06c54730988df/a3f41f7a480543d4%23a3f41f7a480543d4&quot;&gt;newsgroups&lt;/a&gt; pointing me to a support call with Microsoft.  The Microsoft CRM Support Team might not like me posting this simple solution, but I think it is crazy that we got charged a support call for something like this and hopefully my post can prevent someone else from being on hold for two hours.&lt;/p&gt;
+
+&lt;p&gt;To disable it, you simply open RegEdit on the CRM server, browse to the MSCRM key at HKEY_LOCAL_MACHINE -&gt; SOFTWARE -&gt; Microsoft -&gt; MSCRM and add the DWORD &quot;IgnoreChecks&quot; and give a value of 1.&lt;/p&gt;
+
+&lt;p&gt;You will have to reinstall CRM on the box and reconfigure what SQL server/instance you want to use there.  You will get to the screen that has the warnings/errors, and the SQL line item will still give you an warning/error, but with the registry edit you can still click the Next button to proceed (without EDW disabled you can't proceed).  After finishing the install you can delete the registry entry you added.&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;As a disclaimer: backup everything, don't do this on your production box, and if you're unsure about any of this call MS support!&lt;/em&gt;&lt;/p&gt;
+</content>
+ </entry>
+ 
+ 
+</feed>

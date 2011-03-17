@@ -1,0 +1,266 @@
+/*****************************************************************************/
+/*
+/* Common
+/*
+/*****************************************************************************/
+
+/* Global Reset */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
+  font: 13.34px helvetica, arial, clean, sans-serif;
+        *font-size: small;
+        text-align: center;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-size: 100%;
+}
+
+h1 {
+  font-family: 'Droid Serif', serif;
+  font-weight: normal;
+  margin-bottom: 1em;
+}
+
+p {
+  margin: 1em 0;
+}
+
+a {
+  color: #00a;
+}
+
+a:hover {
+  color: black;
+}
+
+a:visited {
+  color: #a0a;
+}
+
+table {
+  font-size: inherit;
+  font: 100%;
+}
+
+/*****************************************************************************/
+/*
+/* content
+/*
+/*****************************************************************************/
+html {
+  padding: 35px 0 35px 0; }
+
+#header {
+  font-family: 'Lato';
+  padding: 25px;
+  background: #fdd825;
+  margin-bottom: 45px;
+  color: #222; }
+  #header .inner {
+    text-align: left;
+    width: 725px;
+    margin: auto; }
+  #header ul {
+    float: right;
+    list-style-type: none; }
+    #header ul li {
+      float: right;
+      margin-left: 18px;
+      margin-top: 10px;
+      font-size: 20px;
+      font-weight: 300; }
+      #header ul li a {
+        color: #333;
+        text-decoration: none; }
+        #header ul li a:hover {
+          text-decoration: underline; }
+  #header h1 {
+    font-size: 40px;
+    font-weight: bold; }
+    #header h1 a {
+      text-decoration: none;
+      color: #333; }
+  #header h2 {
+    font-size: 23px;
+    font-weight: 300; }
+    #header h2 img {
+      margin-left: 3px; }
+    #header h2 a {
+      color: #325C74;
+      text-decoration: underlin
+    }
+    #header h2 a:visited {
+      color: #325C74;
+      text-decoration: underline;
+      text-transform: capitalize;
+    }
+    #header h2 a:hover {
+      color: #344152;
+    }
+
+#content {
+  font-size: 110%;
+  text-align: justify;
+  margin: 3em auto 2em auto;
+  line-height: 1.5em;
+}
+
+#content .inner {
+  text-align: left;
+  width: 725px;
+  margin: auto; 
+}
+
+#content .inner #home {
+  margin: 0 0px 0 120px;
+}
+
+#content h1 {
+  font-family: 'Droid Serif', serif;
+  font-weight: normal;
+  font-size: 20px;
+}
+#content .inner .posts {
+}
+
+#content .inner ul.posts {
+  list-style-type: none;
+  margin-bottom: 2em;
+}
+
+#content .inner ul.posts li {
+  line-height: 1.75em;
+}
+
+#content .inner ul.posts span {
+  color: #888;
+  font-family: Monaco, "Courier New", monospace;
+  font-size: 80%;
+}
+
+h3 {
+  font-family: 'Droid Serif', serif;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 28px;
+  left: -120px;
+  position: relative;
+  text-align: right;
+  top: 32px;
+  width: 100px;
+}
+
+h3.alt {
+  line-height: 14px;
+  top: 20px;
+}
+
+h3:after {
+  content: "/";
+  margin: 0 0 0 1px;
+}
+
+.nice-link-list ul{list-style:none;margin:0;padding:0;width:100%!important}
+
+.nice-project-list li,.nice-link-list li{margin:.8em 0}
+
+.nice-link-list li a:link, .nice-link-list li a:visited{
+  padding:.4em .8em;
+  text-decoration:none;
+  color:#555;
+  background:#fdd825;
+  border-radius:3px;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px
+}
+
+.nice-link-list li a:hover,
+.nice-link-list li a:active{color:#222;background:#ccc}
+
+.nice-link-list time{font-size:.8em;color:#666;font-family:'DejaVu Sans Mono',Consolas,Inconsolata,'Lucida Console',monospace}
+
+#footer {
+  color: #222;
+  margin-top: 25px;
+}
+  #footer .inner {
+    text-align: center;
+    width: 725px;
+    margin: auto; }
+  #footer .inner img a {
+    border: none;
+  }
+ 
+.content .meta {
+  color: #aaa;
+}
+
+/*****************************************************************************/
+/*
+/* Posts
+/*
+/*****************************************************************************/
+
+#post {
+  text-align: justify;
+}
+
+/* standard */
+
+#post pre {
+  border: 1px solid #ddd;
+  background-color: #eef;
+  padding: 0 .4em;
+}
+
+#post ul,
+#post ol {
+  margin-left: 1.35em;
+}
+
+#post code {
+  border: 1px solid #ddd;
+  background-color: #eef;
+  font-size: 85%;
+  padding: 0 .2em;
+}
+
+#post pre code {
+  border: none;
+}
+
+#post blockquote {
+ background-color: #fdd825;
+ padding: 3px 15px 3px 15px;
+ border: #eee 1px solid; 
+}
+
+/* terminal */
+
+#post pre.terminal {
+  border: 1px solid black;
+  background-color: #333;
+  color: white;
+}
+
+#post pre.terminal code {
+  background-color: #333;
+}
+
+#related {
+  margin-top: 2em;
+}
+
+#related h2 {
+  margin-bottom: 1em;
+}

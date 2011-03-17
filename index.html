@@ -1,0 +1,18 @@
+---
+layout: default
+title: Kale Davis 
+---
+<div id="home">
+  <h3>Posts</h3>
+  <ul class="posts nice-link-list">
+    {% for post in site.posts %}
+    <li><a href="{{ post.url }}"><time datetime="{{ post.date }}" pubdate>{{ post.date | date_to_string }}</time> &raquo; {{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
+
+  <h3>Projects</h3>
+  <ul class="posts nice-link-list">
+    <li><a href="http://www.hackernewsletter.com">Hacker Newsletter</a> A weekly newsletter of the best articles on startups, technology, programming, and more, curated by hand from the popular Hacker News site.</li>
+    <li><a href="http://www.sharepointshare.com">SharePoint Share</a> A simple community driven SharePoint links site.</li>
+  </ul>
+</div>
