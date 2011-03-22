@@ -4,13 +4,62 @@
  <title>Tom Preston-Werner</title>
  <link href="http://tom.preston-werner.com/atom.xml" rel="self"/>
  <link href="http://tom.preston-werner.com/"/>
- <updated>2011-03-17T09:28:48-04:00</updated>
+ <updated>2011-03-21T22:18:52-04:00</updated>
  <id>http://tom.preston-werner.com/</id>
  <author>
    <name>Tom Preston-Werner</name>
    <email>tom@mojombo.com</email>
  </author>
 
+ 
+ <entry>
+   <title>Hello Jekyll</title>
+   <link href="http://tom.preston-werner.com/2011/03/17/hello-jekyll.html"/>
+   <updated>2011-03-17T00:00:00-04:00</updated>
+   <id>http://tom.preston-werner.com/2011/03/17/hello-jekyll</id>
+   <content type="html">&lt;p&gt;I finally finished what I had wanted to do several years ago when I first read about &lt;a href=&quot;https://github.com/mojombo/jekyll&quot;&gt;jekyll&lt;/a&gt;, a ruby static site generator created by Tom Preston-Werner (Cofounder of GitHub). The delay was mainly from just not using my site, but then I realized that was probably because it was such a pain to post something on my old WordPress site.&lt;/p&gt;
+
+&lt;p&gt;So here it is with a new design and no comments. I'm keeping everything simple and really focusing on just content this time around. I'm not even importing over all my previous posts, but rather just the few that still get some traffic as of today.&lt;/p&gt;
+
+&lt;p&gt;It is so nice to be in Vim creating content. I found a nice &lt;a href=&quot;https://github.com/csexton/jekyll.vim&quot;&gt;plugin&lt;/a&gt; that works great for creating new posts and publishing. If you have a bigger WordPress site I would highly recommend Paul Stamatiou's &lt;a href=&quot;http://paulstamatiou.com/how-to-wordpress-to-jekyll&quot;&gt;how to migrate from WordPress to Jekyll&lt;/a&gt;.&lt;/p&gt;
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Exporting Data From MongoHQ</title>
+   <link href="http://tom.preston-werner.com/2010/07/21/exporting-data-from-mongohq.html"/>
+   <updated>2010-07-21T00:00:00-04:00</updated>
+   <id>http://tom.preston-werner.com/2010/07/21/exporting-data-from-mongohq</id>
+   <content type="html">
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;mongodump -h temple.mongohq.com:27043 -d database_name -u username -p password -o location_to_copy_to
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Killing Windows Services that hang on "STOPPING"</title>
+   <link href="http://tom.preston-werner.com/2009/12/23/killing-windows-services-that-hang-on-stopping.html"/>
+   <updated>2009-12-23T00:00:00-05:00</updated>
+   <id>http://tom.preston-werner.com/2009/12/23/killing-windows-services-that-hang-on-stopping</id>
+   <content type="html">&lt;p&gt;Although rare, sometimes a Windows Service can hang while stopping or restarting. This happened to me yesterday on one of my SharePoint servers and thought I would write-up a quick note in case I ever need it again. In my case the Office SharePoint Search Service had stopped responding and when I tried to restart the service it hung on &quot;STOPPING&quot;. A reboot would of fixed it, but that isn't an option for a production server usually.&lt;/p&gt;
+
+&lt;p&gt;First, find the service name. You can do that by looking at the properties of the particular service in services.msc. Next you can use the &lt;a href=&quot;http://technet.microsoft.com/en-us/library/bb490995.aspx&quot;&gt;SC&lt;/a&gt; command with queryex to find the PID for that service and then use &lt;a href=&quot;http://technet.microsoft.com/en-us/library/bb491009.aspx&quot;&gt;taskkill&lt;/a&gt; to kill the service.&lt;/p&gt;
+
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sc queryex osearch
+
+taskkill /PID 2056 /F
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+
+&lt;p&gt;&lt;em&gt;Couple notes&lt;/em&gt; - the /F flag is for forcing the service to stop. Try it first without the /F. A service hanging on &quot;STOPPING&quot; is usually a bad sign, so you may want to figure out why this is happening before doing this.&lt;/p&gt;
+</content>
+ </entry>
  
  <entry>
    <title>Why SharePoint Share?</title>
@@ -72,7 +121,7 @@
    <content type="html">&lt;p&gt;Through the course of a day I browse to a lot of sites.  I bookmark a large number of those, and probably revisited a small portion of the sites using them.  Where does that leave me?  I don't really know...that would require more browsing.  So here is couple of the ones that I do look at on a weekly basis:&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;Coding Horror](http://www.codinghorror.com/blog/) - Daily articles about a full range of topics relating to programming and computer science.  A quick way to learn something new each day.&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.codinghorror.com/blog/&quot;&gt;Coding Horror&lt;/a&gt; - Daily articles about a full range of topics relating to programming and computer science.  A quick way to learn something new each day.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.alistapart.com/&quot;&gt;A List Apart&lt;/a&gt; - Great articles on design, development, and web standards. One of the top sites for this type of information.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://www.joelonsoftware.com/&quot;&gt;Joel on Software&lt;/a&gt; - Joel runs Fog Creek, a software company in NYC.  Lately his articles haven't been as useful to me...but his archives are gold.  He actually has two books published that are just reprints of his blog articles.&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;http://xkcd.com&quot;&gt;XKCD&lt;/a&gt; - A webcomic of romance, sarcasm, math, and language.  You have to be a geek to enjoy these...I showed a couple to my wife and she didn't get any of them.  I guess that is a good thing.&lt;/li&gt;
@@ -92,17 +141,19 @@
 
 &lt;p&gt;Here is the error message you will see when you run the dbSPSReporting.sql script:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;Msg 102, Level 15, State 1, Procedure usp_Insert_FactWSS, Line 57
-Incorrect syntax near 'WSSList'.
-Cannot add rows to sys.sql_dependencies for the stored procedure
-because it depends on the missing table 'usp_Insert_FactWSS'. The
-stored procedure will still be created; however, it cannot be
+&lt;pre&gt;&lt;code&gt;Msg 102, Level 15, State 1, Procedure usp_Insert_FactWSS, Line 57 Incorrect syntax near 'WSSList'.
+Cannot add rows to sys.sql_dependencies for the stored procedure because it depends on the missing
+table 'usp_Insert_FactWSS'. The stored procedure will still be created; however, it cannot be
 successfully executed until the table exists.
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;The problem is there is a missing comma after WSSDoc nvarchar(255):&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;Create&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;table&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dbo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tblTempWSS_ToFactLoad&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WSSFactID&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bigint&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;identity&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;Primary&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;Key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;SiteGUID&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uniqueidentifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebGUID&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uniqueidentifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;-- WSSDate datetime, -- Fix for Bug #: 403546 WSSDate smalldatetime, WSSTime nvarchar(8), --WSSUser nvarchar(150), --Fix for Bug #: 403546 WSSUser nvarchar(255), --WSSDoc nvarchar(50), --Fix for Bug #: 403546 WSSDoc nvarchar(255) WSSList uniqueidentifier&lt;/span&gt;
+&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;Create&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;table&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dbo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tblTempWSS_ToFactLoad&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WSSFactID&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bigint&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;identity&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;Primary&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;Key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
+  &lt;span class=&quot;n&quot;&gt;SiteGUID&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uniqueidentifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebGUID&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uniqueidentifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;-- WSSDate datetime, -- Fix for &lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;Bug&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;403546&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WSSDate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;smalldatetime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WSSTime&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nvarchar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;--WSSUser nvarchar(150), --Fix &lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bug&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;403546&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WSSUser&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nvarchar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;--WSSDoc nvarchar(50), --Fix for Bug #: 403546 &lt;/span&gt;
+  &lt;span class=&quot;n&quot;&gt;WSSDoc&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nvarchar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WSSList&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uniqueidentifier&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;/div&gt;
 
@@ -116,15 +167,14 @@ successfully executed until the table exists.
    <link href="http://tom.preston-werner.com/2007/03/15/the-exception-unknown-software-exception.html"/>
    <updated>2007-03-15T00:00:00-04:00</updated>
    <id>http://tom.preston-werner.com/2007/03/15/the-exception-unknown-software-exception</id>
-   <content type="html">&lt;p&gt;&lt;strong&gt;Update 7/10/07&lt;/strong&gt;: kerwin left a comment about a new KB article and hotfix that Microsoft just released.  We tested it yesterday on a machine with both 2003 and 2007 Office components and it seemed to fix the error.  Note that although both the article and hotfix specify WSS 3.0 / MOSS 2007, it also should work with 2.0/2003 (which makes sense, this is a client issue). Thanks kerwin for the information and to all the other people who left helpful comments.&lt;/p&gt;
+   <content type="html">&lt;blockquote&gt;&lt;p&gt;&lt;strong&gt;Update 7/10/07&lt;/strong&gt;: kerwin left a comment about a new KB article and hotfix that Microsoft just released.  We tested it yesterday on a machine with both 2003 and 2007 Office components and it seemed to fix the error.  Note that although both the article and hotfix specify WSS 3.0 / MOSS 2007, it also should work with 2.0/2003 (which makes sense, this is a client issue). Thanks kerwin for the information and to all the other people who left helpful comments.&lt;/p&gt;&lt;/blockquote&gt;
 
 &lt;p&gt;You have to enjoy that helpful IE7 error message right?  This past Monday I started getting an error everytime I tried to open an Office document from SharePoint 2003 (to be specific, a WSS 2.0 Team Site).&lt;/p&gt;
 
 &lt;p&gt;The exact error was:&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;SysFader: iexplore.exe - Application Error : The exception
-unknown software exception (0xc06d007f) occurred in the
-application at location 0x7c812a5b.
+&lt;pre&gt;&lt;code&gt;SysFader: iexplore.exe - Application Error : The exception unknown software exception (0xc06d007f)
+occurred in the application at location 0x7c812a5b.
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;After some searching, I found only one related link on SharePoint University that was close to what I was seeing.  It wasn't much help and basically said to reload XP, not the solution I was looking for.  I then started looking into the IE7 add-ons (Internet Options -&amp;gt; Programs -&amp;gt; Manage add-ons) and disabled the SharePoint ones I found.  That fixed it! Seems like the SharePoint OpenDocuments Class was causing the error.  With it disabled I was able to open the document, however it reduced the functionality of the drop down by removing the &quot;Edit with...&quot; option.&lt;/p&gt;

@@ -16,9 +16,9 @@ html, body {
 }
 
 body {
-  font: 13.34px helvetica, arial, clean, sans-serif;
-        *font-size: small;
-        text-align: center;
+  font: 12px helvetica, verdana, clean, sans-serif;
+  *font-size: small;
+  font-weight: normal;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -43,7 +43,7 @@ a:hover {
   color: black;
 }
 
-a:vicontentd {
+a:visited {
   color: #a0a;
 }
 
@@ -54,103 +54,164 @@ table {
 
 /*****************************************************************************/
 /*
-/* Home
-/*
-/*****************************************************************************/
-
-ul.posts {
-  list-style-type: none;
-  margin-bottom: 2em;
-}
-
-ul.posts li {
-  line-height: 1.75em;
-}
-
-ul.posts span {
-  color: #aaa;
-  font-family: Monaco, "Courier New", monospace;
-  font-size: 80%;
-}
-
-/*****************************************************************************/
-/*
 /* content
 /*
 /*****************************************************************************/
+html {
+  padding: 35px 0 35px 0; }
 
-.content {
+#header {
+  font-family: 'Lato';
+  padding: 25px;
+  background: #fdd825;
+  margin-bottom: 45px;
+  color: #222; }
+  #header .inner {
+    text-align: left;
+    width: 725px;
+    margin: auto; }
+  #header ul {
+    float: right;
+    list-style-type: none; }
+    #header ul li {
+      float: right;
+      margin-left: 18px;
+      margin-top: 10px;
+      font-size: 20px;
+      font-weight: 300; }
+      #header ul li a {
+        color: #333;
+        text-decoration: none; }
+        #header ul li a:hover {
+          text-decoration: underline; }
+  #header h1 {
+    font-size: 40px;
+    font-weight: bold;
+    margin-bottom: 25px;
+  }
+    #header h1 a {
+      text-decoration: none;
+      color: #333; }
+  #header h2 {
+    font-size: 23px;
+    font-weight: 300; }
+    #header h2 img {
+      margin-left: 3px; }
+    #header h2 a {
+      color: #325C74;
+      text-decoration: underlin
+    }
+    #header h2 a:visited {
+      color: #325C74;
+      text-decoration: underline;
+      text-transform: capitalize;
+    }
+    #header h2 a:hover {
+      color: #344152;
+    }
+
+#content {
   font-size: 110%;
   text-align: justify;
-  width: 40em;
   margin: 3em auto 2em auto;
   line-height: 1.5em;
 }
 
-.header p {
-  font-family: 'Droid Serif', serif;
-  background-color: #fdd825;
-  color: #222;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 1.2;
+#content .inner {
+  text-align: left;
+  width: 725px;
+  margin: auto; 
+}
 
-  width: 50em;
-  margin-top: 10em;
+#content .inner #home {
+  margin: 0 0px 0 120px;
+}
+
+#content h2 {
+  font-family: 'Droid Serif', serif;
+  font-weight: normal;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+#content .inner .posts {
+}
+
+#content .inner ul.posts {
+  list-style-type: none;
   margin-bottom: 2em;
 }
 
-.content .header a {
-  color: #325C74;
-  text-decoration: underline;
-  text-transform: capitalize;
+#content .inner ul.posts li {
+  line-height: 1.75em;
 }
 
-.content .header a:vicontentd {
-  color: #325C74;
-  text-decoration: underline;
-  text-transform: capitalize;
+#content .inner ul.posts span {
+  color: #888;
+  font-family: Monaco, "Courier New", monospace;
+  font-size: 80%;
 }
 
-.content .header a:hover {
-  color: #344152;
+#content .inner p {
+  padding-top: 0px;
+  margin-top: 0px;
+  text-align: justify;
 }
 
-.content .header a.extra {
-  color: #aaa;
-  text-decoration: none;
-  margin-left: 1em;
+h3 {
+  font-family: 'Droid Serif', serif;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 28px;
+  left: -120px;
+  position: relative;
+  text-align: right;
+  top: 32px;
+  width: 100px;
 }
 
+h3.alt {
+  line-height: 14px;
+  top: 20px;
+}
+
+h3:after {
+  content: "/";
+  margin: 0 0 0 1px;
+}
+
+.nice-link-list ul{list-style:none;margin:0;padding:0;width:100%!important}
+
+.nice-project-list li,.nice-link-list li{margin:.8em 0}
+
+.nice-link-list li a:link, .nice-link-list li a:visited{
+  padding:.4em .8em;
+  text-decoration:none;
+  color:#555;
+  background:#fdd825;
+  border-radius:3px;
+  -moz-border-radius:3px;
+  -webkit-border-radius:3px
+}
+
+.nice-link-list li a:hover,
+.nice-link-list li a:active{color:#222;background:#ccc}
+
+.nice-link-list time{font-size:.8em;color:#666;font-family:'DejaVu Sans Mono',Consolas,Inconsolata,'Lucida Console',monospace}
+
+#footer {
+  color: #222;
+  margin-top: 50px;
+}
+  #footer .inner {
+    text-align: center;
+    width: 725px;
+    margin: auto; }
+  #footer .inner img {
+    border-style: none;
+  }
+ 
 .content .meta {
   color: #aaa;
-}
-
-.content .footer {
-  font-size: 80%;
-  color: #666;
-  border-top: 4px solid #eee;
-  margin-top: 2em;
-  overflow: hidden;
-}
-
-.content .footer .contact {
-  float: left;
-  margin-right: 3em;
-}
-
-.content .footer .contact a {
-  color: #8085C1;
-}
-
-.content .footer .rss {
-  margin-top: 1.1em;
-  margin-right: -.2em;
-  float: right;
-}
-
-.content .footer .rss img {
-  border: 0;
 }
 
 /*****************************************************************************/
@@ -160,6 +221,7 @@ ul.posts span {
 /*****************************************************************************/
 
 #post {
+  text-align: justify;
 }
 
 /* standard */
@@ -186,6 +248,12 @@ ul.posts span {
   border: none;
 }
 
+#post blockquote {
+ background-color: #fdd825;
+ padding: 3px 15px 3px 15px;
+ border: #eee 1px solid; 
+}
+
 /* terminal */
 
 #post pre.terminal {
@@ -205,118 +273,3 @@ ul.posts span {
 #related h2 {
   margin-bottom: 1em;
 }
-
-html {
-  padding: 35px 0 35px 0; }
-
-body {
-  text-align: center;
-  font-family: 'Helvetica Neue', Helvetica;
-  font-size: 14px;
-  color: #666; }
-
-#header {
-  font-family: 'Lato';
-  padding: 25px;
-  background: #e4d4a3;
-  margin-bottom: 45px;
-  color: #333; }
-  #header .inner {
-    text-align: left;
-    width: 725px;
-    margin: auto; }
-  #header ul {
-    float: right;
-    list-style-type: none; }
-    #header ul li {
-      float: right;
-      margin-left: 18px;
-      margin-top: 10px;
-      font-size: 23px;
-      font-weight: 300; }
-      #header ul li a {
-        color: #333;
-        text-decoration: none; }
-        #header ul li a:hover {
-          text-decoration: underline; }
-  #header h1 {
-    font-size: 59px;
-    font-weight: bold; }
-    #header h1 a {
-      text-decoration: none;
-      color: #333; }
-  #header h2 {
-    font-size: 23px;
-    font-weight: 300; }
-    #header h2 img {
-      margin-left: 3px; }
-
-#content .inner {
-  text-align: left;
-  width: 725px;
-  margin: auto; }
-
-.post {
-  margin-bottom: 55px; }
-  .post h3 {
-    font-size: 29px;
-    font-family: 'Lato';
-    font-weight: normal;
-    margin-bottom: 25px; }
-  .post h3 a {
-    text-decoration: none; }
-  .post h3 a:hover {
-    text-decoration: underline; }
-  .post .body {
-    font-size: 17px; }
-  .post .body p {
-    margin-bottom: 1em; }
-  .post ul {
-    margin-bottom: 1em; }
-  .post ul li {
-    margin-bottom: 0.5em; }
-  .post .meta {
-    margin-top: 25px;
-    border-top: 3px double #ddd;
-    padding-top: 25px;
-    color: #999; }
-
-#footer {
-  font-family: 'Lato';
-  background: #e4d4a3;
-  padding: 25px;
-  color: #333; }
-  #footer .inner {
-    text-align: left;
-    width: 725px;
-    margin: auto; }
-  #footer h3 {
-    font-size: 24px;
-    margin-bottom: 15px;
-    font-weight: 300; }
-    #footer h3 a {
-      text-decoration: none;
-      color: #333; }
-      #footer h3 a:hover {
-        text-decoration: underline; }
-  #footer table {
-    font-weight: 300; }
-  #footer table tr td {
-    padding-bottom: 3px;
-    padding-right: 15px; }
-  #footer table tr td a {
-    text-decoration: none; }
-  #footer table tr td a:hover {
-    text-decoration: underline; }
-  #footer table tr td.date {
-    text-align: right; }
-  #footer .archives {
-    float: left;
-    margin-right: 25px; }
-  #footer .about {
-    float: left; }
-    #footer .about img {
-      float: left; }
-    #footer .about div {
-      padding-left: 94px;
-      width: 140px; }
