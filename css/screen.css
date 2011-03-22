@@ -16,9 +16,9 @@ html, body {
 }
 
 body {
-  font: 13.34px helvetica, arial, clean, sans-serif;
-        *font-size: small;
-        text-align: center;
+  font: 12px helvetica, verdana, clean, sans-serif;
+  *font-size: small;
+  font-weight: normal;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -86,7 +86,9 @@ html {
           text-decoration: underline; }
   #header h1 {
     font-size: 40px;
-    font-weight: bold; }
+    font-weight: bold;
+    margin-bottom: 25px;
+  }
     #header h1 a {
       text-decoration: none;
       color: #333; }
@@ -125,10 +127,11 @@ html {
   margin: 0 0px 0 120px;
 }
 
-#content h1 {
+#content h2 {
   font-family: 'Droid Serif', serif;
   font-weight: normal;
   font-size: 20px;
+  margin-bottom: 10px;
 }
 #content .inner .posts {
 }
@@ -146,6 +149,12 @@ html {
   color: #888;
   font-family: Monaco, "Courier New", monospace;
   font-size: 80%;
+}
+
+#content .inner p {
+  padding-top: 0px;
+  margin-top: 0px;
+  text-align: justify;
 }
 
 h3 {
@@ -191,14 +200,14 @@ h3:after {
 
 #footer {
   color: #222;
-  margin-top: 25px;
+  margin-top: 50px;
 }
   #footer .inner {
     text-align: center;
     width: 725px;
     margin: auto; }
-  #footer .inner img a {
-    border: none;
+  #footer .inner img {
+    border-style: none;
   }
  
 .content .meta {
