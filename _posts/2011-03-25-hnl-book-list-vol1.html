@@ -1,0 +1,599 @@
+---
+layout: post
+title: Hacker Newsletter Book List - Volume One
+---
+<link type="text/css" href="/css/books.css" rel="stylesheet" />	
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js"></script> 
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js"></script> 
+<script src="/js/jquery.isotope.min.js"></script> 
+
+<script type="text/javascript"> 
+  $(function(){
+      var $books = $("#books").isotope({
+itemSelector: '.book',
+layoutMode: 'fitRows',
+getSortData : {
+salesrank : function( $elem ) {
+return parseInt($elem.find('.salesrank').html(), 10);
+},
+price : function( $elem ) {
+return $elem.find('.price').html();
+},
+title : function( $elem ) {
+return $elem.find('.title').html();
+},
+subjects : function( $elem ) {
+return $elem.find('.subjects').html();
+}
+}
+});
+
+      $("#sort a").click(function(){
+        $books.isotope({ sortBy: $(this).attr('data-sort')}); 
+        return false;
+        });
+$("#filter a").click(function(){
+    $books.isotope({ filter: $(this).attr('data-filter')});
+    return false;
+    });
+});
+</script>
+
+<style>
+  .book {float: left; margin: 10px; padding: 10px; height: 200px; font-size: 80%; background: #ccc; border: 1px solid #999;}
+  .book img {width: 120px; height: 160px; border: 1px solid #555;}
+  .salesrank, .subjects, .price {display: none;}
+  .author {line-height: 1.2; width: 120px;}
+  p.author {text-align: left !important;}
+  h2.title {display: none;}
+
+  #options > * {
+    float: left;
+    margin-right: 10px;
+  }
+
+  #options .option-combo {
+    display: inline-block;
+
+  }
+
+  #options h2 {
+    line-height: 34px;
+    margin-bottom: 0;
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  #options ul {
+    margin-right: 20px;
+    display: inline-block;
+  }
+  a img { border: none; }
+  /**** Isotope filtering ****/
+  .isotope-item {
+    z-index: 2;
+  }
+  .isotope-hidden.isotope-item {
+    pointer-events: none;
+    z-index: 1;
+  }
+  .isotope,
+  .isotope .isotope-item {
+    /* change duration value to whatever you like */
+    -webkit-transition-duration: 0.8s;
+    -moz-transition-duration: 0.8s;
+    transition-duration: 0.8s;
+  }
+
+  .isotope {
+    -webkit-transition-property: height, width;
+    -moz-transition-property: height, width;
+    transition-property: height, width;
+  }
+
+  .isotope .isotope-item {
+    -webkit-transition-property: -webkit-transform, opacity;
+    -moz-transition-property:    -moz-transform, opacity;
+    transition-property:         transform, opacity;
+  }
+</style>
+
+<p>This is the results of <a href="http://us1.campaign-archive1.com/?u=faa8eb4ef3a111cef92c4f3d4&id=44c91fd9d9">asking</a> my great <a href="http://www.hackernewsletter.com">Hacker Newsletter</a> subscribers what they are currently reading. I thought this experiment went very well and I found several books that I've added to my queue, including several that I hadn't seen before as well as many I had wanted to read, but had forgotten about.</p>
+
+<p>I wanted to try the new jquery <a href="http://isotope.metafizzy.co/">isotope</a> plugin out, but ran short on time so if you have any issues with this page please let me know. All of these have my affiliate code in the link. Thanks for supporting the newsletter!</p>
+
+<section id="options" class="clearfix"> 
+<div class="option-combo"> 
+  <h2>Filter:</h2> 
+  <ul id="filter" class="option-set floated clearfix"> 
+    <li><a href="#show-all" data-filter="*" class="selected">Show All</a></li> 
+    <li><a href="#programming" data-filter=":contains('Programming')">Programming</a></li> 
+    <li><a href="#business" data-filter=":contains('Business')">Business</a></li> 
+    <li><a href="#fiction" data-filter=":contains('Fiction')">Fiction</a></li> 
+    <li><a href="#show-inverse" data-filter=".isotope-hidden">Show Inverse</a></li> 
+  </ul> 
+</div> 
+<div class="option-combo"> 
+  <h2>Sort:</h2> 
+  <ul id="sort" class="option-set floated clearfix"> 
+    <li><a href="#title" data-sort="title" class="selected">Title</a></li> 
+    <li><a href="#sales-rank" data-sort="salesrank">Sales Rank</a></li> 
+  </ul> 
+</div> 
+</section> 
+
+<br />
+<div id="books">
+  <div class="book">
+    <a href="http://www.amazon.com/dp/0451457994?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/41Jxy32UrCL._SL160_.jpg"/></a>
+    <h2 class="title">2001: A Space Odyssey</h2>
+    <p class="author">Arthur C. Clarke</p>
+    <p class="salesrank">23835</p>
+    <p class="price">$7.99</p>
+    <p class="subjects">["Books", "Subjects", "Literature &amp; Fiction", "Classics"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/030746363X?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/41OSuh5vFDL._SL160_.jpg"/></a>
+    <h2 class="title">The 4-Hour Body: An Uncommon Guide to Rapid Fat-Loss, Incredible Sex, and Becoming Superhuman</h2>
+    <p class="author">Timothy Ferriss</p>
+    <p class="salesrank">22</p>
+    <p class="price">$27.00</p>
+    <p class="subjects">["Books", "Subjects", "Health, Mind &amp; Body", "Diets &amp; Weight Loss", "Diets"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/B004GB1T5E?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/51Uzh3NMZvL._SL160_.jpg"/></a>
+    <h2 class="title">47 Echo</h2>
+    <p class="author">Shawn Kupfer</p>
+    <p class="salesrank">2554</p>
+    <p class="price">$4.99</p>
+    <p class="subjects">["Books", "Subjects", "Books &amp; Reading", "British", "Classics", "Comic", "Drama", "Erotica", "Essays", "Foreign Language Fiction", "Genre Fiction", "History &amp; Criticism", "Letters &amp; Correspondence", "Literary", "Poetry", "Short Stories", "United States", "World Literature", "Literature &amp; Fiction"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/0321525949?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/517DIcTNYrL._SL160_.jpg"/></a>
+    <h2 class="title">Advanced Programming in the UNIX Environment, Second Edition (Addison-Wesley Professional Computing Series)</h2>
+    <p class="author">Richard Stevens, Stephen Rago</p>
+    <p class="salesrank">75516</p>
+    <p class="price">$69.99</p>
+    <p class="subjects">["Books", "Subjects", "Computers &amp; Internet", "Operating Systems", "AIX", "Administration", "Shell", "Unix"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/0131479415?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/51UOc2SQyWL._SL160_.jpg"/></a>
+    <h2 class="title">Agile Estimating and Planning</h2>
+    <p class="author">Mike Cohn</p>
+    <p class="salesrank">12002</p>
+    <p class="price">$54.99</p>
+    <p class="subjects">["Books", "Subjects", "Computers &amp; Internet", "Computer Science", "Design Tools &amp; Techniques", "Information Systems", "Methodology", "Multimedia Information Systems", "Software Engineering"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/1932394990?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/41EiemPzzqL._SL160_.jpg"/></a>
+    <h2 class="title">Ajax in Practice</h2>
+    <p class="author">Crane, Bibeault, Sonneveld, Goddard, Gray</p>
+    <p class="salesrank">114438</p>
+    <p class="price">$44.99</p>
+    <p class="subjects">["Books", "Subjects", "Computers &amp; Internet", "Business &amp; Culture", "History"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/1449379869?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/61BnyIxUqML._SL160_.jpg"/></a>
+    <h2 class="title">Beautiful Visualization: Looking at Data through the Eyes of Experts</h2>
+    <p class="author">Julie Steele, Noah Iliinsky</p>
+    <p class="salesrank">15103</p>
+    <p class="price">$59.99</p>
+    <p class="subjects">["Books", "Subjects", "Home Computing", "Apple", "Business &amp; Culture", "Certification Central", "Computer Science", "Databases", "Digital Music", "Digital Photography &amp; Video", "Games &amp; Strategy Guides", "Graphic Design", "Hardware", "Microsoft", "Mobile &amp; Wireless Computing", "Networking", "Operating Systems", "Programming", "Project Management", "Security &amp; Encryption", "Software", "Web Development", "Computers &amp; Internet"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/0756783577?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/51DKVkU9jfL._SL160_.jpg"/></a>
+    <h2 class="title">Bill Clinton: An American Journey</h2>
+    <p class="author">Nigel Hamilton</p>
+    <p class="salesrank">1644881</p>
+    <p class="price">$30.00</p>
+    <p class="subjects">["Books", "Subjects", "Biographies &amp; Memoirs", "Leaders &amp; Notable People", "Presidents &amp; Heads of State"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/0316010669?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/41lrqAEHKBL._SL160_.jpg"/></a>
+    <h2 class="title">Blink: The Power of Thinking Without Thinking</h2>
+    <p class="author">Malcolm Gladwell</p>
+    <p class="salesrank">185</p>
+    <p class="price">$15.99</p>
+    <p class="subjects">["Books", "Subjects", "Business &amp; Investing", "Management &amp; Leadership"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/159691565X?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/51urSsnG8%2BL._SL160_.jpg"/></a>
+    <h2 class="title">Blur: How to Know What's True in the Age of Information Overload</h2>
+    <p class="author">Bill Kovach, Tom Rosenstiel</p>
+    <p class="salesrank">40355</p>
+    <p class="price">$26.00</p>
+    <p class="subjects">["Books", "Subjects", "Nonfiction", "Social Sciences"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/0131387685?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/413Fl-9dj-L._SL160_.jpg"/></a>
+    <h2 class="title">CUDA by Example: An Introduction to General-Purpose GPU Programming</h2>
+    <p class="author">Jason Sanders, Edward Kandrot</p>
+    <p class="salesrank">8617</p>
+    <p class="price">$39.99</p>
+    <p class="subjects">["Books", "Subjects", "Computers &amp; Internet", "Hardware", "Design &amp; Architecture"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/0321486811?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/51XtGJ64tZL._SL160_.jpg"/></a>
+    <h2 class="title">Compilers: Principles, Techniques, and Tools (2nd Edition)</h2>
+    <p class="author">Aho, Lam, Sethi, Ullman</p>
+    <p class="salesrank">99254</p>
+    <p class="price">$106.00</p>
+    <p class="subjects">["Books", "Subjects", "Computers &amp; Internet", "Hardware", "Embedded Systems", "Microprocessor Design", "PIC Microcontroller", "Microprocessors &amp; System Design"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/031600538X?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/515dsGMhnPL._SL160_.jpg"/></a>
+    <h2 class="title">Consider Phlebas</h2>
+    <p class="author">Iain M. Banks</p>
+    <p class="salesrank">17608</p>
+    <p class="price">$14.99</p>
+    <p class="subjects">["Books", "Subjects", "Books &amp; Reading", "British", "Classics", "Comic", "Drama", "Erotica", "Essays", "Foreign Language Fiction", "Genre Fiction", "History &amp; Criticism", "Letters &amp; Correspondence", "Literary", "Poetry", "Short Stories", "United States", "World Literature", "Literature &amp; Fiction"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/0321620062?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/41ayE60BxJL._SL160_.jpg"/></a>
+    <h2 class="title">Content Strategy for the Web</h2>
+    <p class="author">Kristina Halvorson</p>
+    <p class="salesrank">5389</p>
+    <p class="price">$24.99</p>
+    <p class="subjects">["Books", "Subjects", "Computers &amp; Internet", "Web Development", "Content Management"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/1434768511?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/31YPiGaN%2BCL._SL160_.jpg"/></a>
+    <h2 class="title">Crazy Love: Overwhelmed by a Relentless God</h2>
+    <p class="author">Francis Chan</p>
+    <p class="salesrank">60</p>
+    <p class="price">$14.99</p>
+    <p class="subjects">["Books", "Subjects", "Religion &amp; Spirituality", "Christianity", "Christian Living"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/0451228731?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/51tcPfVlhUL._SL160_.jpg"/></a>
+    <h2 class="title">Daemon</h2>
+    <p class="author">Daniel Suarez</p>
+    <p class="salesrank">36421</p>
+    <p class="price">$9.99</p>
+    <p class="subjects">["Books", "Subjects", "Books &amp; Reading", "British", "Classics", "Comic", "Drama", "Erotica", "Essays", "Foreign Language Fiction", "Genre Fiction", "History &amp; Criticism", "Letters &amp; Correspondence", "Literary", "Poetry", "Short Stories", "United States", "World Literature", "Literature &amp; Fiction"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/0071244743?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/31u2ffsdpiL._SL160_.jpg"/></a>
+    <h2 class="title">Discrete Mathematics and Its Applications</h2>
+    <p class="author">Kenneth Rosen</p>
+    <p class="salesrank">617128</p>
+    <p class="price">$74.82</p>
+    <p class="subjects">[]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/0441013597?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/412Z9FE2E6L._SL160_.jpg"/></a>
+    <h2 class="title">Dune, 40th Anniversary Edition (Dune Chronicles, Book 1)</h2>
+    <p class="author">Frank Herbert</p>
+    <p class="salesrank">8390</p>
+    <p class="price">$17.00</p>
+    <p class="subjects">[]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.abookapart.com/products/the-elements-of-content-strategy"><img src="http://bkaprt.com/i/aba-3-thumb.png"/></a>
+    <h2 class="title">The Elements of Content Strategy </h2>
+    <p class="author">Erin Kissane</p>
+    <p class="salesrank">99999</p>
+    <p class="price">$18.00</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/1585423130?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/51xBGC0p1%2BL._SL160_.jpg"/></a>
+    <h2 class="title">The End of Work</h2>
+    <p class="author">Jeremy Rifkin</p>
+    <p class="salesrank">167968</p>
+    <p class="price">$15.95</p>
+    <p class="subjects">["Books", "Subjects", "Business &amp; Investing", "Economics"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/0553579754?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/414krtnQGvL._SL160_.jpg"/></a>
+    <h2 class="title">Fear Nothing</h2>
+    <p class="author">Dean Koontz</p>
+    <p class="salesrank">97132</p>
+    <p class="price">$7.99</p>
+    <p class="subjects">["Books", "Subjects", "Literature &amp; Fiction", "Genre Fiction", "Horror"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/1430210788?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/41KymmiLKHL._SL160_.jpg"/></a>
+    <h2 class="title">Founders at Work: Stories of Startups' Early Days (Recipes: a Problem-Solution Ap)</h2>
+    <p class="author">Jessica Livingston</p>
+    <p class="salesrank">6072</p>
+    <p class="price">$17.99</p>
+    <p class="subjects">["Books", "Subjects", "Business &amp; Investing", "Industries &amp; Professions"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/B0026OR2NQ?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/51foanUeChL._SL160_.jpg"/></a>
+    <h2 class="title">Hackers &amp; Painters</h2>
+    <p class="author">Paul Graham</p>
+    <p class="salesrank">16890</p>
+    <p class="price">$18.99</p>
+    <p class="subjects">["Books", "Subjects", "Computers &amp; Internet", "Business &amp; Culture", "Hacking"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/0307591549?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/41JT8EK0dsL._SL160_.jpg"/></a>
+    <h2 class="title">The Happiness Advantage: The Seven Principles of Positive Psychology That Fuel Success and Performance at Work</h2>
+    <p class="author">Shawn Achor</p>
+    <p class="salesrank">1557</p>
+    <p class="price">$25.00</p>
+    <p class="subjects">["Books", "Subjects", "Business &amp; Investing", "Management &amp; Leadership", "Motivational"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/0765356147?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/51dx1LkrzqL._SL160_.jpg"/></a>
+    <h2 class="title">The Hero of Ages: Book Three of Mistborn</h2>
+    <p class="author">Brandon Sanderson</p>
+    <p class="salesrank">12252</p>
+    <p class="price">$7.99</p>
+    <p class="subjects">["Books", "Subjects", "Books &amp; Reading", "British", "Classics", "Comic", "Drama", "Erotica", "Essays", "Foreign Language Fiction", "Genre Fiction", "History &amp; Criticism", "Letters &amp; Correspondence", "Literary", "Poetry", "Short Stories", "United States", "World Literature", "Literature &amp; Fiction"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/159184259X?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/41STqSZ0HpL._SL160_.jpg"/></a>
+    <h2 class="title">Ignore Everybody: and 39 Other Keys to Creativity</h2>
+    <p class="author">Hugh MacLeod</p>
+    <p class="salesrank">10919</p>
+    <p class="price">$23.95</p>
+    <p class="subjects">["Books", "Subjects", "Business &amp; Investing", "Ethics", "Etiquette", "Fashion &amp; Image", "Health &amp; Stress", "Work Life Balance", "Business Life"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/0375423729?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/519uLG8YD1L._SL160_.jpg"/></a>
+    <h2 class="title">The Information: A History, a Theory, a Flood</h2>
+    <p class="author">James Gleick</p>
+    <p class="salesrank">24</p>
+    <p class="price">$29.95</p>
+    <p class="subjects">["Books", "Subjects", "Computers &amp; Internet", "Business &amp; Culture", "History"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/1608190862?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/51bd-liy9GL._SL160_.jpg"/></a>
+    <h2 class="title">Jonathan Strange &amp; Mr Norrell</h2>
+    <p class="author">Susanna Clarke</p>
+    <p class="salesrank">35710</p>
+    <p class="price">$16.00</p>
+    <p class="subjects">["Books", "Subjects", "Literature &amp; Fiction", "Literary"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/0765319853?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/51uFCdRYGzL._SL160_.jpg"/></a>
+    <h2 class="title">Little Brother</h2>
+    <p class="author">Cory Doctorow</p>
+    <p class="salesrank">168324</p>
+    <p class="price">$17.95</p>
+    <p class="subjects">["Books", "Subjects", "Action &amp; Adventure", "Animals", "Arts &amp; Music", "Educational", "Fairy Tales, Folk Tales &amp; Myths", "History &amp; Historical Fiction", "Holidays &amp; Festivals", "Humor", "Issues", "Literature", "Multilingual", "Mysteries, Espionage, &amp; Detectives", "People &amp; Places", "Reference &amp; Nonfiction", "Religions", "Science Fiction, Fantasy &amp; Horror", "Science, Nature &amp; How It Works", "Sports &amp; Activities"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/1934356476?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/41ygBmdaIfL._SL160_.jpg"/></a>
+    <h2 class="title">Metaprogramming Ruby: Program Like the Ruby Pros</h2>
+    <p class="author">Paolo Perrotta</p>
+    <p class="salesrank">35765</p>
+    <p class="price">$32.95</p>
+    <p class="subjects">["Books", "Subjects", "Computers &amp; Internet", "Programming", "Ajax", "Assembly Language Programming", "Borland Delphi", "CSS", "Compiler Design", "Compilers", "Fortran", "Lisp", "Prolog", "Python", "Visual Basic", "XHTML", "XML", "Languages &amp; Tools"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/0805078533?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/41RX7302GNL._SL160_.jpg"/></a>
+    <h2 class="title">On Intelligence</h2>
+    <p class="author">Jeff Hawkins, Sandra Blakeslee</p>
+    <p class="salesrank">102794</p>
+    <p class="price">$16.99</p>
+    <p class="subjects">["Books", "Subjects", "Computers &amp; Internet", "Computer Science", "Artificial Intelligence", "Computer Mathematics"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/0321552628?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/41Ro3yiuddL._SL160_.jpg"/></a>
+    <h2 class="title">OpenGL Programming Guide: The Official Guide to Learning OpenGL, Versions 3.0 and 3.1 (7th Edition)</h2>
+    <p class="author">Dave Shreiner</p>
+    <p class="salesrank">50237</p>
+    <p class="price">$59.99</p>
+    <p class="subjects">["Books", "Subjects", "Computers &amp; Internet", "Programming", "Graphics &amp; Multimedia", "OpenGL"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/0262514974?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/41YXAOWlS1L._SL160_.jpg"/></a>
+    <h2 class="title">Parentonomics: An Economist Dad Looks at Parenting</h2>
+    <p class="author">Joshua Gans</p>
+    <p class="salesrank">419322</p>
+    <p class="price">$11.95</p>
+    <p class="subjects">["Books", "Subjects", "Accounting", "Biography &amp; History", "Business Life", "Economics", "Finance", "Industries &amp; Professions", "International", "Investing", "Job Hunting &amp; Careers", "Management &amp; Leadership", "Marketing &amp; Sales", "Organizational Behavior", "Personal Finance", "Popular Economics", "Real Estate", "Reference", "Skills", "Small Business &amp; Entrepreneurship", "Women &amp; Business", "Business &amp; Investing"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/1934356344?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/41fyjTVARFL._SL160_.jpg"/></a>
+    <h2 class="title">The Passionate Programmer: Creating a Remarkable Career in Software Development (Pragmatic Life)</h2>
+    <p class="author">Chad Fowler</p>
+    <p class="salesrank">13528</p>
+    <p class="price">$23.95</p>
+    <p class="subjects">["Books", "Subjects", "Business &amp; Investing", "Job Hunting &amp; Careers", "Guides"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/1936719002?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/41pWJt5ApVL._SL160_.jpg"/></a>
+    <h2 class="title">Poke the Box</h2>
+    <p class="author">Seth Godin</p>
+    <p class="salesrank">66</p>
+    <p class="price">$12.99</p>
+    <p class="subjects">["Books", "Subjects", "Business &amp; Investing", "Management &amp; Leadership", "Motivational"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/0974514055?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/41qwcGl5ghL._SL160_.jpg"/></a>
+    <h2 class="title">Programming Ruby: The Pragmatic Programmers' Guide, Second Edition</h2>
+    <p class="author">Dave Thomas, Chad Fowler, Andy Hunt</p>
+    <p class="salesrank">243314</p>
+    <p class="price">$44.95</p>
+    <p class="subjects">["Books", "Subjects", "Computers &amp; Internet", "Programming", "Ajax", "Assembly Language Programming", "Borland Delphi", "CSS", "Compiler Design", "Compilers", "Fortran", "Lisp", "Prolog", "Python", "Visual Basic", "XHTML", "XML", "Languages &amp; Tools"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/8590379825?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/41AAqXJ7jgL._SL160_.jpg"/></a>
+    <h2 class="title">Programming in Lua, Second Edition</h2>
+    <p class="author">Roberto Ierusalimschy</p>
+    <p class="salesrank">11645</p>
+    <p class="price">$39.95</p>
+    <p class="subjects">["Books", "Subjects", "Computers &amp; Internet", "Programming", "Ajax", "Assembly Language Programming", "Borland Delphi", "CSS", "Compiler Design", "Compilers", "Fortran", "Lisp", "Prolog", "Python", "Visual Basic", "XHTML", "XML", "Languages &amp; Tools"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/1934356379?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/51tFzC0fFZL._SL160_.jpg"/></a>
+    <h2 class="title">The RSpec Book: Behaviour Driven Development with Rspec, Cucumber, and Friends (The Facets of Ruby Series)</h2>
+    <p class="author">Chelimsky, Astels, Helmkamp, North, Dennis, Hellesoy</p>
+    <p class="salesrank">20725</p>
+    <p class="price">$38.95</p>
+    <p class="subjects">["Books", "Subjects", "Business &amp; Investing", "Management &amp; Leadership", "Quality Control"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/1934356646?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/41SdqNBZbcL._SL160_.jpg"/></a>
+    <h2 class="title">Rails Test Prescriptions (Pragmatic Programmers)</h2>
+    <p class="author">Noel Rappin</p>
+    <p class="salesrank">161469</p>
+    <p class="price">$34.95</p>
+    <p class="subjects">["Books", "Subjects", "Computers &amp; Internet", "Programming", "Ajax", "Assembly Language Programming", "Borland Delphi", "CSS", "Compiler Design", "Compilers", "Fortran", "Lisp", "Prolog", "Python", "Visual Basic", "XHTML", "XML", "Languages &amp; Tools"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/0201485672?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/51T4YZ3HieL._SL160_.jpg"/></a>
+    <h2 class="title">Refactoring: Improving the Design of Existing Code</h2>
+    <p class="author">Fowler, Beck, Brant, Opdyke, Roberts</p>
+    <p class="salesrank">3544</p>
+    <p class="price">$64.99</p>
+    <p class="subjects">["Books", "Subjects", "Computers &amp; Internet", "Computer Science", "Software Engineering", "Design Tools &amp; Techniques"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/0321657292?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/41xhA5EwnyL._SL160_.jpg"/></a>
+    <h2 class="title">Rocket Surgery Made Easy: The Do-It-Yourself Guide to Finding and Fixing Usability Problems</h2>
+    <p class="author">Steve Krug</p>
+    <p class="salesrank">5546</p>
+    <p class="price">$35.00</p>
+    <p class="subjects">["Books", "Subjects", "Computers &amp; Internet", "Web Development", "Dreamweaver", "Fireworks", "Flash", "Web Graphics", "Web Design"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.amazon.com/dp/0321743121?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/51fHlS9vK2L._SL160_.jpg"/></a>
+    <h2 class="title">Ruby on Rails 3 Tutorial: Learn Rails by Example (Addison-Wesley Professional Ruby Series)</h2>
+    <p class="author">Michael Hartl</p>
+    <p class="salesrank">4228</p>
+    <p class="price">$39.99</p>
+    <p class="subjects">["Books", "Subjects", "Computers &amp; Internet", "Programming", "Ajax", "Assembly Language Programming", "Borland Delphi", "CSS", "Compiler Design", "Compilers", "Fortran", "Lisp", "Prolog", "Python", "Visual Basic", "XHTML", "XML", "Languages &amp; Tools"]</p>
+  </div>
+
+  <div class="book">
+    <a href="http://www.manning.com/suereth/"><img src="http://www.manning.com/suereth/suereth_cover150.jpg"/></a>
+    <h2 class="title">Scala in Depth</h2>
+    <p class="author">Joshua D. Suereth</p>
+        <p class="salesrank">99999</p>
+        <p class="price">$29.99</p>
+      </div>
+
+      <div class="book">
+        <a href="http://www.amazon.com/dp/067232699X?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/51ZFYH5mqlL._SL160_.jpg"/></a>
+        <h2 class="title">Scalable Internet Architectures</h2>
+        <p class="author">Theo Schlossnagle</p>
+        <p class="salesrank">148880</p>
+        <p class="price">$49.99</p>
+        <p class="subjects">["Books", "Subjects", "Computers &amp; Internet", "Home Computing", "Online Searching", "Internet"]</p>
+      </div>
+
+      <div class="book">
+        <a href="http://www.amazon.com/dp/0441783589?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/51T3Iwe0YZL._SL160_.jpg"/></a>
+        <h2 class="title">Starship Troopers</h2>
+        <p class="author">Robert A. Heinlein</p>
+        <p class="salesrank">7328</p>
+        <p class="price">$9.99</p>
+        <p class="subjects">[]</p>
+      </div>
+
+      <div class="book">
+        <a href="http://www.amazon.com/dp/0192801422?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/514BKFJvqqL._SL160_.jpg"/></a>
+        <h2 class="title">To Mock a Mockingbird: And Other Logic Puzzles</h2>
+        <p class="author">Raymond M. Smullyan</p>
+        <p class="salesrank">243089</p>
+        <p class="price">$16.50</p>
+        <p class="subjects">["Books", "Subjects", "Entertainment", "Puzzles &amp; Games"]</p>
+      </div>
+
+      <div class="book">
+        <a href="http://www.amazon.com/dp/0596520123?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/41CJrtv%2BS1L._SL160_.jpg"/></a>
+        <h2 class="title">Version Control with Git: Powerful Tools and Techniques for Collaborative Software Development</h2>
+        <p class="author">Jon Loeliger</p>
+        <p class="salesrank">74199</p>
+        <p class="price">$34.99</p>
+        <p class="subjects">["Books", "Subjects", "Computers &amp; Internet", "Computer Science", "Software Engineering", "Design Tools &amp; Techniques"]</p>
+      </div>
+
+      <div class="book">
+        <a href="http://www.amazon.com/dp/1592579671?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/51v-ThhvC-L._SL160_.jpg"/></a>
+        <h2 class="title">The Wealthy Freelancer: 12 Secrets to a Great Income and an Enviable Lifestyle</h2>
+        <p class="author">Slaunwhite, Savage, Gandia</p>
+        <p class="salesrank">11899</p>
+        <p class="price">$16.95</p>
+        <p class="subjects">["Books", "Subjects", "Business &amp; Investing", "Job Hunting &amp; Careers", "Guides"]</p>
+      </div>
+
+      <div class="book">
+        <a href="http://www.amazon.com/dp/0230750567?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/41%2BYyF3LeWL._SL160_.jpg"/></a>
+        <h2 class="title">What You See Is What You Get: My Autobiography</h2>
+        <p class="author">Alan Sugar</p>
+        <p class="salesrank">476437</p>
+        <p class="price">$22.95</p>
+        <p class="subjects">[Biographies]</p>
+      </div>
+
+      <div class="book">
+        <a href="http://www.amazon.com/dp/0316076201?tag=hnl-20"><img src="http://ecx.images-amazon.com/images/I/41dRkn1rySL._SL160_.jpg"/></a>
+        <h2 class="title">What the Dog Saw: And Other Adventures</h2>
+        <p class="author">Malcolm Gladwell</p>
+        <p class="salesrank">1054</p>
+        <p class="price">$16.99</p>
+        <p class="subjects">["Books", "Subjects", "Accounting", "Biography &amp; History", "Business Life", "Economics", "Finance", "Industries &amp; Professions", "International", "Investing", "Job Hunting &amp; Careers", "Management &amp; Leadership", "Marketing &amp; Sales", "Organizational Behavior", "Personal Finance", "Popular Economics", "Real Estate", "Reference", "Skills", "Small Business &amp; Entrepreneurship", "Women &amp; Business", "Business &amp; Investing"]</p>
+      </div>
+
+    </div>
+
+    <script type="text/javascript"> 
+      var currentLayout = 'fitRows';
+
+      $('#layouts a').click(function(){
+          var layoutName = $(this).attr('href').slice(1);
+          $list.removeClass( currentLayout ).addClass( layoutName );
+          currentLayout = layoutName;
+          $list.isotope({ layoutMode : layoutName });
+          return false;
+          });
+// switches selected class on buttons
+$('#options').find('.option-set a').click(function(){
+    var $this = $(this);
+
+    // don't proceed if already selected
+    if ( !$this.hasClass('selected') ) {
+    $this.parents('.option-set').find('.selected').removeClass('selected');
+    $this.addClass('selected');
+    }
+
+    });
+  </script>
