@@ -70,15 +70,16 @@ Using <a href="http://www.hackernewsletter.com">Hacker Newsletter</a> as an exam
 
 That is created by adding the following javascript to your page:
 
-{% highlight javascript %}
+{:.html}
+~~~
 <div class="chimpchiclet">
-  <script language="JavaScript"
-  src="http://us1.list-manage.com/subscriber-count?b=2&u=faa8eb4ef3a111cef92c4f3d4&id=e505c88a2e"
-  type="text/javascript"></script>
+  <script language="JavaScript" src="http://us1.list-manage.com/subscriber-count?
+    b=2&u=faa8eb4ef3a111cef92c4f3d4&id=e505c88a2e" type="text/javascript">
+  </script>
 </div>
-{% endhighlight %}
+~~~
 
-<br/>
+<br />
 
 So to find the count for any newsletter you just need to find **u**, **id**, and the server it is located on, which in my case is **us1** (us2 being the other one that I have seen). Plug those into the URL in the javascript code above and open in your browser to see the number... or see below for an easier way to do this.
 

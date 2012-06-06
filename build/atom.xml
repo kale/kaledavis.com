@@ -1,22 +1,778 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
  
- <title>Tom Preston-Werner</title>
- <link href="http://tom.preston-werner.com/atom.xml" rel="self"/>
- <link href="http://tom.preston-werner.com/"/>
- <updated>2011-03-21T22:18:52-04:00</updated>
- <id>http://tom.preston-werner.com/</id>
+ <title>Kale Davis</title>
+ <link href="http://www.kaledavis.com/atom.xml" rel="self"/>
+ <link href="http://www.kaledavis.com/"/>
+ <updated>2012-03-20T09:12:45-04:00</updated>
+ <id>http://www.kaledavis.com/</id>
  <author>
-   <name>Tom Preston-Werner</name>
-   <email>tom@mojombo.com</email>
+   <name>Kale Davis</name>
+   <email>kale@kaledavis.com</email>
  </author>
 
  
  <entry>
+   <title>More Airbnb Articles</title>
+   <link href="http://www.kaledavis.com/2011/07/31/airbnb-on-hn.html"/>
+   <updated>2011-07-31T00:00:00-04:00</updated>
+   <id>http://www.kaledavis.com/2011/07/31/airbnb-on-hn</id>
+   <content type="html">&lt;p&gt;Airbnb filled up the front page of Hacker News this week. You can find the top four articles in this weeks &lt;a href=&quot;http://us1.campaign-archive1.com/?u=faa8eb4ef3a111cef92c4f3d4&amp;amp;id=ad040a2f96&quot;&gt;Hacker Newsletter&lt;/a&gt; and here is the other interesting ones:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;http://techcrunch.com/2011/07/30/how-the-hell-is-this-my-fault/&quot;&gt;How The Hell Is This My Fault?&lt;/a&gt; - &lt;a href=&quot;http://news.ycombinator.com/item?id=2825177&quot;&gt;comments&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.ft.com/intl/cms/s/2/9aac5f80-b924-11e0-bd87-00144feabdc0.html&quot;&gt;Airbnb story on front page of Financial Times print edition&lt;/a&gt; - &lt;a href=&quot;http://news.ycombinator.com/item?id=2821399&quot;&gt;comments&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://www.betabeat.com/2011/07/29/airbnb-competitor-roomorama-we-dont-want-to-trade-security-for-volume/&quot;&gt;Airbnb Competitor Checks IDs: 'We Don't Want to Trade Security for Volume'&lt;/a&gt; - &lt;a href=&quot;http://news.ycombinator.com/item?id=2823039&quot;&gt;comments&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://techcrunch.com/2011/07/27/on-safety-a-word-from-airbnb/&quot;&gt;On Safety: A Word From Airbnb&lt;/a&gt; - &lt;a href=&quot;http://news.ycombinator.com/item?id=2815067&quot;&gt;comments&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://travel.usatoday.com/destinations/dispatches/post/2011/07/plot-thickens-airbnb-renter-horror-story/179250/1&quot;&gt;Plot thickens in Airbnb vacation rental horror story&lt;/a&gt; - &lt;a href=&quot;http://news.ycombinator.com/item?id=2826297&quot;&gt;comments&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://techcrunch.com/2011/07/24/airbnb-bags-112-million-in-series-b-from-andreessen-and-others/&quot;&gt;Airbnb bags $112 million in Series B&lt;/a&gt; - &lt;a href=&quot;http://news.ycombinator.com/item?id=2801332&quot;&gt;comments&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>How To Find Newsletter Subscriber Counts (if they use MailChimp)</title>
+   <link href="http://www.kaledavis.com/2011/03/30/mailchimp-newsletter-subscriber-count.html"/>
+   <updated>2011-03-30T00:00:00-04:00</updated>
+   <id>http://www.kaledavis.com/2011/03/30/mailchimp-newsletter-subscriber-count</id>
+   <content type="html">
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js&quot;&gt;&lt;/script&gt;
+
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;script&gt; 
+
+(function ($) {
+ // custom css expression for a case-insensitive contains()
+ jQuery.expr[':'].Contains = function(a,i,m){
+ return (a.textContent || a.innerText || &quot;&quot;).toUpperCase().indexOf(m[3].toUpperCase())&gt;=0;
+ };
+
+ function listFilter(header, list) { // header is any element, list is an unordered list
+ // create and add the filter form to the header
+ var form = $(&quot;&lt;form&gt;&quot;).attr({&quot;class&quot;:&quot;filterform&quot;,&quot;action&quot;:&quot;#&quot;}),
+ input = $(&quot;&lt;input&gt;&quot;).attr({&quot;class&quot;:&quot;filterinput&quot;,&quot;type&quot;:&quot;text&quot;});
+ $(form).append(input).appendTo(header);
+
+ $(input)
+ .change( function () {
+   var filter = $(this).val();
+   if(filter) {
+   // this finds all links in a list that contain the input,
+   // and hide the ones not containing the input while showing the ones that do
+   $(list).find(&quot;a:not(:Contains(&quot; + filter + &quot;))&quot;).parent().slideUp();
+   $(list).find(&quot;a:Contains(&quot; + filter + &quot;)&quot;).parent().slideDown();
+   } else {
+   $(list).find(&quot;li&quot;).slideDown();
+   }
+   return false;
+   })
+.keyup( function () {
+    // fire the above change event after every letter
+    $(this).change();
+    });
+ }
+
+ //ondomready
+ $(function () {
+     listFilter($(&quot;#search&quot;), $(&quot;#list&quot;));
+     });
+}(jQuery));
+&lt;/script&gt;
+
+
+&lt;p&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;em&gt;A week later and MailChimp has &lt;a href=&quot;http://blog.mailchimp.com/new-chiclet-and-badge-designs/&quot;&gt;fixed&lt;/a&gt; this by allowing you to turn off the chiclet feature... they are some fast monkeys! So with that said this article will only apply to anyone who has left their privacy setting to &quot;public&quot;, which would most likely be any newsletter that already exists as of 4/1/11.&lt;/em&gt;&lt;/p&gt;
+
+&lt;p&gt;Did you know that the &lt;a href=&quot;http://www.ted.com&quot;&gt;Ted&lt;/a&gt; newsletter has over a half million subscribers? I find that impressive especially after starting my own newsletter, &lt;a href=&quot;http://www.hackernewsletter.com&quot;&gt;Hacker Newsletter&lt;/a&gt;, and seeing just how tough it is to get subscribers. Every week I get feedback on how great and useful my newsletter is and always see +50% open rates, but penetrating inboxes is a lot harder than I had imagined (but a fun challenge!). I started wondering how other newsletters were doing and although some publish there subscriber counts most don't. It just took me a minute to realize that if they were using &lt;a href=&quot;http://eepurl.com/EtWV&quot;&gt;MailChimp&lt;/a&gt; like I am, all I would need to figure out is how the subscriber count javascript chicklet that MailChimp provides works.&lt;/p&gt;
+
+&lt;p&gt;That turned out to be very easy since MailChimp uses two parameter variables to track everything: u and id. So to find those I just needed to either sign-up for their newsletter or, better yet, just find any MailChimp related links on their websites (like for the signup form or archives link) to find those parameters.&lt;/p&gt;
+
+&lt;p&gt;Using &lt;a href=&quot;http://www.hackernewsletter.com&quot;&gt;Hacker Newsletter&lt;/a&gt; as an example:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/images/posts/hnl_mailchimp_chicklet.png&quot; alt=&quot;Hacker Newsletter Javascript Chicklet&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;That is created by adding the following javascript to your page:&lt;/p&gt;
+
+&lt;p&gt;Liquid error: undefined method `join' for #&amp;lt;String:0x8ba4b4c&gt;&lt;/p&gt;
+
+&lt;br/&gt;
+
+
+&lt;p&gt;So to find the count for any newsletter you just need to find &lt;strong&gt;u&lt;/strong&gt;, &lt;strong&gt;id&lt;/strong&gt;, and the server it is located on, which in my case is &lt;strong&gt;us1&lt;/strong&gt; (us2 being the other one that I have seen). Plug those into the URL in the javascript code above and open in your browser to see the number... or see below for an easier way to do this.&lt;/p&gt;
+
+&lt;p&gt;I love &lt;a href=&quot;http://eepurl.com/EtWV&quot;&gt;MailChimp&lt;/a&gt; and highly recommend them as they provide a really great service that is just plain fun to use. On top of that, the ability to start using them for free while your list is small (currently &amp;lt; 2000 subscribers) made it possible for me to start my newsletter. It does seem like they need to come up with a better way of doing this though, or at least let customers clearly know that their subscriber count is public.&lt;/p&gt;
+
+&lt;p style=&quot;font-weight: bold; padding: 10px; background: #FDD825&quot;&gt;Do you want to find out how many subscribers any MailChimp powered newsletter has? If so, forward one of their newsletters to newsletter@simplerise.com. I have a simple script that will process it and email you back the count and add it to this page. If they don't use MailChimp it will let you know that as well.&lt;/p&gt;
+
+
+
+
+&lt;h2&gt;Popular Newsletter Subscriber Counts (as of 3/30/11)&lt;/h2&gt;
+
+
+&lt;div id=&quot;search&quot;&gt;
+Filter by name:
+&lt;/div&gt;
+
+
+
+
+&lt;ul id=&quot;list&quot;&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=07487d1456302a286cf9c4ccc&amp;id=934d447288&quot;&gt;Ted&lt;/a&gt; - 512,966 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=906594042ce8669084b92c572&amp;id=0f4f7807d2&quot;&gt;RetailMeNot&lt;/a&gt; - 325,807 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=6668d9eeefc9962d2f433dceb&amp;id=72f59191ee&quot;&gt;Photojojo&lt;/a&gt; - 147,769 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us2.campaign-archive1.com/home/?u=4b31e3f858a9b28673cf325a4&amp;id=3ac92de6ac&quot;&gt;Teen Today&lt;/a&gt; - 39,264 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=38d0a9f3a3cc16864784086bf&amp;id=46bc7fde62&quot;&gt;Jason Nation&lt;/a&gt; - 22,349 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us2.campaign-archive1.com/home/?u=f5a0df2d9082c86e808468c10&amp;id=9fbeb5d667&quot;&gt;ReadWriteWeb&lt;/a&gt; - 15,381 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=92be899ef5a892c60b4a6cd97&amp;id=62dc6ea1a0&quot;&gt;StartupDigest Reading List&lt;/a&gt; - 13,803 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=2d5473bd832b12ecd4d0c6963&amp;id=8a02a5a028&quot;&gt;Om Says&lt;/a&gt; - 13,676 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=2d5473bd832b12ecd4d0c6963&amp;id=8a02a5a028&quot;&gt;GigaOM Daily Newsletter for Tuesday&lt;/a&gt; - 13,676 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=3a5a3fb1ad250e247bde9f42d&amp;id=4ae03b8d6f&quot;&gt;Tenth Amendment&lt;/a&gt; - 11,450 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=6cd557f316f6c6b5deccf9bc0&amp;id=fa1ece381d&quot;&gt;thinkvitamin&lt;/a&gt; - 11,346 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=92be899ef5a892c60b4a6cd97&amp;id=f13023b675&quot;&gt;NYC StartupDigest&lt;/a&gt; - 8,059 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=92be899ef5a892c60b4a6cd97&amp;id=e1343c1a66&quot;&gt;Silicon Valley StartupDigest Jobs&lt;/a&gt; - 6,045 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=0618f6a79d6bb9675f313ceb2&amp;id=596bcf37c5&quot;&gt;Javascript Weekly&lt;/a&gt; - 4,784 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=0618f6a79d6bb9675f313ceb2&amp;id=d9d24eba5b&quot;&gt;Ruby Weekly&lt;/a&gt; - 4,478 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=92be899ef5a892c60b4a6cd97&amp;id=f0dd695756&quot;&gt;NYC StartupDigest Jobs&lt;/a&gt; - 4,378 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=92be899ef5a892c60b4a6cd97&amp;id=0aa48cc2ac&quot;&gt;London StartupDigest&lt;/a&gt; - 3,993 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=2889002ad89d45ca21f50ba46&amp;id=689d00e31c&quot;&gt;Now I Know&lt;/a&gt; - 3,915 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=92be899ef5a892c60b4a6cd97&amp;id=544c942d83&quot;&gt;LA StartupDigest&lt;/a&gt; - 3,844 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=92be899ef5a892c60b4a6cd97&amp;id=a4294c263c&quot;&gt;Boston StartupDigest&lt;/a&gt; - 3,443 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=f459eaf4db&amp;id=b4f52d8716&quot;&gt;Spark Labs&lt;/a&gt; - 3,036 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=92be899ef5a892c60b4a6cd97&amp;id=14abd0ef4f&quot;&gt;LA StartupDigest Jobs&lt;/a&gt; - 2,701 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=92be899ef5a892c60b4a6cd97&amp;id=d6fd272142&quot;&gt;London StartupDigest Jobs&lt;/a&gt; - 2,428 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=92be899ef5a892c60b4a6cd97&amp;id=2c69e1d240&quot;&gt;Seattle StartupDigest&lt;/a&gt; - 2,225 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=92be899ef5a892c60b4a6cd97&amp;id=54c5b9303b&quot;&gt;Boston StartupDigest Jobs&lt;/a&gt; - 2,182 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us2.campaign-archive1.com/home/?u=ae7d9b999f4ee1793cafe3ecf&amp;id=c48e2e2fa4&quot;&gt;MassArt&lt;/a&gt; - 1,267 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=dbe3ff5e1d2dd2af18cddb197&amp;id=0905ebf33a&quot;&gt;FareCompare&lt;/a&gt; - 1,214 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=92be899ef5a892c60b4a6cd97&amp;id=7f2dca86c5&quot;&gt;Seattle StartupDigest Jobs&lt;/a&gt; - 904 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us2.campaign-archive1.com/home/?u=b6635e37e35fa5eff0c2a947a&amp;id=a63f24d068&quot;&gt;DevOps&lt;/a&gt; - 886 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=25c0f3189b58b697b3da13e3c&amp;id=943136c5b5&quot;&gt;Breakfast with Champions&lt;/a&gt; - 794 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=faa8eb4ef3a111cef92c4f3d4&amp;id=e505c88a2e&quot;&gt;Hacker Newsletter&lt;/a&gt; - 613 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=279b20f77e1a261164154c446&amp;id=40b6e2cb5a&quot;&gt;Subtraction.com&lt;/a&gt; - 596 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us2.campaign-archive1.com/home/?u=72f68dcee17c92724bc7822fb&amp;id=2f0470315b&quot;&gt;NoSQL&lt;/a&gt; - 501 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us1.campaign-archive1.com/home/?u=700201bdc3d3c2f8799341868&amp;id=dbd08efebd&quot;&gt;Idea Bing&lt;/a&gt; - 368 subscribers&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;http://us2.campaign-archive1.com/home/?u=d501d61627659be31f006dc80&amp;id=9850ea9d48&quot;&gt;Hipmunk&lt;/a&gt; - 302 subscribers&lt;/li&gt;
+&lt;/ul&gt;
+
+</content>
+ </entry>
+ 
+ <entry>
+   <title>Hacker Newsletter Book List - Volume One</title>
+   <link href="http://www.kaledavis.com/2011/03/25/hnl-book-list-vol1.html"/>
+   <updated>2011-03-25T00:00:00-04:00</updated>
+   <id>http://www.kaledavis.com/2011/03/25/hnl-book-list-vol1</id>
+   <content type="html">&lt;link type=&quot;text/css&quot; href=&quot;/css/books.css&quot; rel=&quot;stylesheet&quot; /&gt;	
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.5.1/jquery.min.js&quot;&gt;&lt;/script&gt; 
+&lt;script type=&quot;text/javascript&quot; src=&quot;http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.11/jquery-ui.min.js&quot;&gt;&lt;/script&gt; 
+&lt;script src=&quot;/js/jquery.isotope.min.js&quot;&gt;&lt;/script&gt; 
+
+&lt;script type=&quot;text/javascript&quot;&gt; 
+  $(function(){
+      var $books = $(&quot;#books&quot;).isotope({
+itemSelector: '.book',
+layoutMode: 'fitRows',
+getSortData : {
+salesrank : function( $elem ) {
+return parseInt($elem.find('.salesrank').html(), 10);
+},
+price : function( $elem ) {
+return $elem.find('.price').html();
+},
+title : function( $elem ) {
+return $elem.find('.title').html();
+},
+subjects : function( $elem ) {
+return $elem.find('.subjects').html();
+}
+}
+});
+
+      $(&quot;#sort a&quot;).click(function(){
+        $books.isotope({ sortBy: $(this).attr('data-sort')}); 
+        return false;
+        });
+$(&quot;#filter a&quot;).click(function(){
+    $books.isotope({ filter: $(this).attr('data-filter')});
+    return false;
+    });
+});
+&lt;/script&gt;
+
+&lt;style&gt;
+  .book {float: left; margin: 10px; padding: 10px; height: 200px; font-size: 80%; background: #ccc; border: 1px solid #999;}
+  .book img {width: 120px; height: 160px; border: 1px solid #555;}
+  .salesrank, .subjects, .price {display: none;}
+  .author {line-height: 1.2; width: 120px;}
+  p.author {text-align: left !important;}
+  h2.title {display: none;}
+
+  #options &gt; * {
+    float: left;
+    margin-right: 10px;
+  }
+
+  #options .option-combo {
+    display: inline-block;
+
+  }
+
+  #options h2 {
+    line-height: 34px;
+    margin-bottom: 0;
+    margin-right: 5px;
+    display: inline-block;
+    vertical-align: top;
+  }
+
+  #options ul {
+    margin-right: 20px;
+    display: inline-block;
+  }
+  a img { border: none; }
+  /**** Isotope filtering ****/
+  .isotope-item {
+    z-index: 2;
+  }
+  .isotope-hidden.isotope-item {
+    pointer-events: none;
+    z-index: 1;
+  }
+  .isotope,
+  .isotope .isotope-item {
+    /* change duration value to whatever you like */
+    -webkit-transition-duration: 0.8s;
+    -moz-transition-duration: 0.8s;
+    transition-duration: 0.8s;
+  }
+
+  .isotope {
+    -webkit-transition-property: height, width;
+    -moz-transition-property: height, width;
+    transition-property: height, width;
+  }
+
+  .isotope .isotope-item {
+    -webkit-transition-property: -webkit-transform, opacity;
+    -moz-transition-property:    -moz-transform, opacity;
+    transition-property:         transform, opacity;
+  }
+&lt;/style&gt;
+
+&lt;p&gt;This is the results of &lt;a href=&quot;http://us1.campaign-archive1.com/?u=faa8eb4ef3a111cef92c4f3d4&amp;id=44c91fd9d9&quot;&gt;asking&lt;/a&gt; my great &lt;a href=&quot;http://www.hackernewsletter.com&quot;&gt;Hacker Newsletter&lt;/a&gt; subscribers what they are currently reading. I thought this experiment went very well and I found several books that I've added to my queue, including several that I hadn't seen before as well as many I had wanted to read, but had forgotten about.&lt;/p&gt;
+
+&lt;p&gt;I wanted to try the new jquery &lt;a href=&quot;http://isotope.metafizzy.co/&quot;&gt;isotope&lt;/a&gt; plugin out, but ran short on time so if you have any issues with this page please let me know. All of these have my affiliate code in the link. Thanks for supporting the newsletter!&lt;/p&gt;
+
+&lt;section id=&quot;options&quot; class=&quot;clearfix&quot;&gt; 
+&lt;div class=&quot;option-combo&quot;&gt; 
+  &lt;h2&gt;Filter:&lt;/h2&gt; 
+  &lt;ul id=&quot;filter&quot; class=&quot;option-set floated clearfix&quot;&gt; 
+    &lt;li&gt;&lt;a href=&quot;#show-all&quot; data-filter=&quot;*&quot; class=&quot;selected&quot;&gt;Show All&lt;/a&gt;&lt;/li&gt; 
+    &lt;li&gt;&lt;a href=&quot;#programming&quot; data-filter=&quot;:contains('Programming')&quot;&gt;Programming&lt;/a&gt;&lt;/li&gt; 
+    &lt;li&gt;&lt;a href=&quot;#business&quot; data-filter=&quot;:contains('Business')&quot;&gt;Business&lt;/a&gt;&lt;/li&gt; 
+    &lt;li&gt;&lt;a href=&quot;#fiction&quot; data-filter=&quot;:contains('Fiction')&quot;&gt;Fiction&lt;/a&gt;&lt;/li&gt; 
+    &lt;li&gt;&lt;a href=&quot;#show-inverse&quot; data-filter=&quot;.isotope-hidden&quot;&gt;Show Inverse&lt;/a&gt;&lt;/li&gt; 
+  &lt;/ul&gt; 
+&lt;/div&gt; 
+&lt;div class=&quot;option-combo&quot;&gt; 
+  &lt;h2&gt;Sort:&lt;/h2&gt; 
+  &lt;ul id=&quot;sort&quot; class=&quot;option-set floated clearfix&quot;&gt; 
+    &lt;li&gt;&lt;a href=&quot;#title&quot; data-sort=&quot;title&quot; class=&quot;selected&quot;&gt;Title&lt;/a&gt;&lt;/li&gt; 
+    &lt;li&gt;&lt;a href=&quot;#sales-rank&quot; data-sort=&quot;salesrank&quot;&gt;Sales Rank&lt;/a&gt;&lt;/li&gt; 
+  &lt;/ul&gt; 
+&lt;/div&gt; 
+&lt;/section&gt; 
+
+&lt;br /&gt;
+&lt;div id=&quot;books&quot;&gt;
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/0451457994?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/41Jxy32UrCL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;2001: A Space Odyssey&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Arthur C. Clarke&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;23835&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$7.99&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Literature &amp;amp; Fiction&quot;, &quot;Classics&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/030746363X?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/41OSuh5vFDL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;The 4-Hour Body: An Uncommon Guide to Rapid Fat-Loss, Incredible Sex, and Becoming Superhuman&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Timothy Ferriss&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;22&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$27.00&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Health, Mind &amp;amp; Body&quot;, &quot;Diets &amp;amp; Weight Loss&quot;, &quot;Diets&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/B004GB1T5E?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/51Uzh3NMZvL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;47 Echo&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Shawn Kupfer&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;2554&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$4.99&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Books &amp;amp; Reading&quot;, &quot;British&quot;, &quot;Classics&quot;, &quot;Comic&quot;, &quot;Drama&quot;, &quot;Erotica&quot;, &quot;Essays&quot;, &quot;Foreign Language Fiction&quot;, &quot;Genre Fiction&quot;, &quot;History &amp;amp; Criticism&quot;, &quot;Letters &amp;amp; Correspondence&quot;, &quot;Literary&quot;, &quot;Poetry&quot;, &quot;Short Stories&quot;, &quot;United States&quot;, &quot;World Literature&quot;, &quot;Literature &amp;amp; Fiction&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/0321525949?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/517DIcTNYrL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Advanced Programming in the UNIX Environment, Second Edition (Addison-Wesley Professional Computing Series)&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Richard Stevens, Stephen Rago&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;75516&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$69.99&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Computers &amp;amp; Internet&quot;, &quot;Operating Systems&quot;, &quot;AIX&quot;, &quot;Administration&quot;, &quot;Shell&quot;, &quot;Unix&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/0131479415?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/51UOc2SQyWL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Agile Estimating and Planning&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Mike Cohn&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;12002&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$54.99&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Computers &amp;amp; Internet&quot;, &quot;Computer Science&quot;, &quot;Design Tools &amp;amp; Techniques&quot;, &quot;Information Systems&quot;, &quot;Methodology&quot;, &quot;Multimedia Information Systems&quot;, &quot;Software Engineering&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/1932394990?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/41EiemPzzqL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Ajax in Practice&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Crane, Bibeault, Sonneveld, Goddard, Gray&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;114438&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$44.99&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Computers &amp;amp; Internet&quot;, &quot;Business &amp;amp; Culture&quot;, &quot;History&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/1449379869?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/61BnyIxUqML._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Beautiful Visualization: Looking at Data through the Eyes of Experts&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Julie Steele, Noah Iliinsky&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;15103&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$59.99&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Home Computing&quot;, &quot;Apple&quot;, &quot;Business &amp;amp; Culture&quot;, &quot;Certification Central&quot;, &quot;Computer Science&quot;, &quot;Databases&quot;, &quot;Digital Music&quot;, &quot;Digital Photography &amp;amp; Video&quot;, &quot;Games &amp;amp; Strategy Guides&quot;, &quot;Graphic Design&quot;, &quot;Hardware&quot;, &quot;Microsoft&quot;, &quot;Mobile &amp;amp; Wireless Computing&quot;, &quot;Networking&quot;, &quot;Operating Systems&quot;, &quot;Programming&quot;, &quot;Project Management&quot;, &quot;Security &amp;amp; Encryption&quot;, &quot;Software&quot;, &quot;Web Development&quot;, &quot;Computers &amp;amp; Internet&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/0756783577?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/51DKVkU9jfL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Bill Clinton: An American Journey&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Nigel Hamilton&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;1644881&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$30.00&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Biographies &amp;amp; Memoirs&quot;, &quot;Leaders &amp;amp; Notable People&quot;, &quot;Presidents &amp;amp; Heads of State&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/0316010669?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/41lrqAEHKBL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Blink: The Power of Thinking Without Thinking&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Malcolm Gladwell&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;185&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$15.99&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Business &amp;amp; Investing&quot;, &quot;Management &amp;amp; Leadership&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/159691565X?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/51urSsnG8%2BL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Blur: How to Know What's True in the Age of Information Overload&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Bill Kovach, Tom Rosenstiel&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;40355&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$26.00&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Nonfiction&quot;, &quot;Social Sciences&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/0131387685?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/413Fl-9dj-L._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;CUDA by Example: An Introduction to General-Purpose GPU Programming&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Jason Sanders, Edward Kandrot&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;8617&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$39.99&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Computers &amp;amp; Internet&quot;, &quot;Hardware&quot;, &quot;Design &amp;amp; Architecture&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/0321486811?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/51XtGJ64tZL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Compilers: Principles, Techniques, and Tools (2nd Edition)&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Aho, Lam, Sethi, Ullman&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;99254&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$106.00&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Computers &amp;amp; Internet&quot;, &quot;Hardware&quot;, &quot;Embedded Systems&quot;, &quot;Microprocessor Design&quot;, &quot;PIC Microcontroller&quot;, &quot;Microprocessors &amp;amp; System Design&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/031600538X?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/515dsGMhnPL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Consider Phlebas&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Iain M. Banks&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;17608&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$14.99&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Books &amp;amp; Reading&quot;, &quot;British&quot;, &quot;Classics&quot;, &quot;Comic&quot;, &quot;Drama&quot;, &quot;Erotica&quot;, &quot;Essays&quot;, &quot;Foreign Language Fiction&quot;, &quot;Genre Fiction&quot;, &quot;History &amp;amp; Criticism&quot;, &quot;Letters &amp;amp; Correspondence&quot;, &quot;Literary&quot;, &quot;Poetry&quot;, &quot;Short Stories&quot;, &quot;United States&quot;, &quot;World Literature&quot;, &quot;Literature &amp;amp; Fiction&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/0321620062?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/41ayE60BxJL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Content Strategy for the Web&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Kristina Halvorson&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;5389&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$24.99&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Computers &amp;amp; Internet&quot;, &quot;Web Development&quot;, &quot;Content Management&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/1434768511?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/31YPiGaN%2BCL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Crazy Love: Overwhelmed by a Relentless God&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Francis Chan&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;60&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$14.99&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Religion &amp;amp; Spirituality&quot;, &quot;Christianity&quot;, &quot;Christian Living&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/0451228731?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/51tcPfVlhUL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Daemon&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Daniel Suarez&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;36421&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$9.99&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Books &amp;amp; Reading&quot;, &quot;British&quot;, &quot;Classics&quot;, &quot;Comic&quot;, &quot;Drama&quot;, &quot;Erotica&quot;, &quot;Essays&quot;, &quot;Foreign Language Fiction&quot;, &quot;Genre Fiction&quot;, &quot;History &amp;amp; Criticism&quot;, &quot;Letters &amp;amp; Correspondence&quot;, &quot;Literary&quot;, &quot;Poetry&quot;, &quot;Short Stories&quot;, &quot;United States&quot;, &quot;World Literature&quot;, &quot;Literature &amp;amp; Fiction&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/0071244743?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/31u2ffsdpiL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Discrete Mathematics and Its Applications&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Kenneth Rosen&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;617128&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$74.82&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/0441013597?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/412Z9FE2E6L._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Dune, 40th Anniversary Edition (Dune Chronicles, Book 1)&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Frank Herbert&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;8390&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$17.00&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.abookapart.com/products/the-elements-of-content-strategy&quot;&gt;&lt;img src=&quot;http://bkaprt.com/i/aba-3-thumb.png&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;The Elements of Content Strategy &lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Erin Kissane&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;99999&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$18.00&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/1585423130?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/51xBGC0p1%2BL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;The End of Work&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Jeremy Rifkin&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;167968&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$15.95&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Business &amp;amp; Investing&quot;, &quot;Economics&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/0553579754?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/414krtnQGvL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Fear Nothing&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Dean Koontz&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;97132&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$7.99&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Literature &amp;amp; Fiction&quot;, &quot;Genre Fiction&quot;, &quot;Horror&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/1430210788?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/41KymmiLKHL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Founders at Work: Stories of Startups' Early Days (Recipes: a Problem-Solution Ap)&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Jessica Livingston&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;6072&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$17.99&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Business &amp;amp; Investing&quot;, &quot;Industries &amp;amp; Professions&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/B0026OR2NQ?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/51foanUeChL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Hackers &amp;amp; Painters&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Paul Graham&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;16890&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$18.99&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Computers &amp;amp; Internet&quot;, &quot;Business &amp;amp; Culture&quot;, &quot;Hacking&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/0307591549?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/41JT8EK0dsL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;The Happiness Advantage: The Seven Principles of Positive Psychology That Fuel Success and Performance at Work&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Shawn Achor&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;1557&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$25.00&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Business &amp;amp; Investing&quot;, &quot;Management &amp;amp; Leadership&quot;, &quot;Motivational&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/0765356147?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/51dx1LkrzqL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;The Hero of Ages: Book Three of Mistborn&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Brandon Sanderson&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;12252&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$7.99&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Books &amp;amp; Reading&quot;, &quot;British&quot;, &quot;Classics&quot;, &quot;Comic&quot;, &quot;Drama&quot;, &quot;Erotica&quot;, &quot;Essays&quot;, &quot;Foreign Language Fiction&quot;, &quot;Genre Fiction&quot;, &quot;History &amp;amp; Criticism&quot;, &quot;Letters &amp;amp; Correspondence&quot;, &quot;Literary&quot;, &quot;Poetry&quot;, &quot;Short Stories&quot;, &quot;United States&quot;, &quot;World Literature&quot;, &quot;Literature &amp;amp; Fiction&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/159184259X?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/41STqSZ0HpL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Ignore Everybody: and 39 Other Keys to Creativity&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Hugh MacLeod&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;10919&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$23.95&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Business &amp;amp; Investing&quot;, &quot;Ethics&quot;, &quot;Etiquette&quot;, &quot;Fashion &amp;amp; Image&quot;, &quot;Health &amp;amp; Stress&quot;, &quot;Work Life Balance&quot;, &quot;Business Life&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/0375423729?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/519uLG8YD1L._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;The Information: A History, a Theory, a Flood&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;James Gleick&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;24&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$29.95&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Computers &amp;amp; Internet&quot;, &quot;Business &amp;amp; Culture&quot;, &quot;History&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/1608190862?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/51bd-liy9GL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Jonathan Strange &amp;amp; Mr Norrell&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Susanna Clarke&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;35710&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$16.00&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Literature &amp;amp; Fiction&quot;, &quot;Literary&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/0765319853?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/51uFCdRYGzL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Little Brother&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Cory Doctorow&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;168324&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$17.95&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Action &amp;amp; Adventure&quot;, &quot;Animals&quot;, &quot;Arts &amp;amp; Music&quot;, &quot;Educational&quot;, &quot;Fairy Tales, Folk Tales &amp;amp; Myths&quot;, &quot;History &amp;amp; Historical Fiction&quot;, &quot;Holidays &amp;amp; Festivals&quot;, &quot;Humor&quot;, &quot;Issues&quot;, &quot;Literature&quot;, &quot;Multilingual&quot;, &quot;Mysteries, Espionage, &amp;amp; Detectives&quot;, &quot;People &amp;amp; Places&quot;, &quot;Reference &amp;amp; Nonfiction&quot;, &quot;Religions&quot;, &quot;Science Fiction, Fantasy &amp;amp; Horror&quot;, &quot;Science, Nature &amp;amp; How It Works&quot;, &quot;Sports &amp;amp; Activities&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/1934356476?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/41ygBmdaIfL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Metaprogramming Ruby: Program Like the Ruby Pros&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Paolo Perrotta&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;35765&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$32.95&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Computers &amp;amp; Internet&quot;, &quot;Programming&quot;, &quot;Ajax&quot;, &quot;Assembly Language Programming&quot;, &quot;Borland Delphi&quot;, &quot;CSS&quot;, &quot;Compiler Design&quot;, &quot;Compilers&quot;, &quot;Fortran&quot;, &quot;Lisp&quot;, &quot;Prolog&quot;, &quot;Python&quot;, &quot;Visual Basic&quot;, &quot;XHTML&quot;, &quot;XML&quot;, &quot;Languages &amp;amp; Tools&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/0805078533?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/41RX7302GNL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;On Intelligence&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Jeff Hawkins, Sandra Blakeslee&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;102794&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$16.99&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Computers &amp;amp; Internet&quot;, &quot;Computer Science&quot;, &quot;Artificial Intelligence&quot;, &quot;Computer Mathematics&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/0321552628?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/41Ro3yiuddL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;OpenGL Programming Guide: The Official Guide to Learning OpenGL, Versions 3.0 and 3.1 (7th Edition)&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Dave Shreiner&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;50237&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$59.99&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Computers &amp;amp; Internet&quot;, &quot;Programming&quot;, &quot;Graphics &amp;amp; Multimedia&quot;, &quot;OpenGL&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/0262514974?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/41YXAOWlS1L._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Parentonomics: An Economist Dad Looks at Parenting&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Joshua Gans&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;419322&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$11.95&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Accounting&quot;, &quot;Biography &amp;amp; History&quot;, &quot;Business Life&quot;, &quot;Economics&quot;, &quot;Finance&quot;, &quot;Industries &amp;amp; Professions&quot;, &quot;International&quot;, &quot;Investing&quot;, &quot;Job Hunting &amp;amp; Careers&quot;, &quot;Management &amp;amp; Leadership&quot;, &quot;Marketing &amp;amp; Sales&quot;, &quot;Organizational Behavior&quot;, &quot;Personal Finance&quot;, &quot;Popular Economics&quot;, &quot;Real Estate&quot;, &quot;Reference&quot;, &quot;Skills&quot;, &quot;Small Business &amp;amp; Entrepreneurship&quot;, &quot;Women &amp;amp; Business&quot;, &quot;Business &amp;amp; Investing&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/1934356344?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/41fyjTVARFL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;The Passionate Programmer: Creating a Remarkable Career in Software Development (Pragmatic Life)&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Chad Fowler&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;13528&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$23.95&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Business &amp;amp; Investing&quot;, &quot;Job Hunting &amp;amp; Careers&quot;, &quot;Guides&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/1936719002?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/41pWJt5ApVL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Poke the Box&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Seth Godin&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;66&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$12.99&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Business &amp;amp; Investing&quot;, &quot;Management &amp;amp; Leadership&quot;, &quot;Motivational&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/0974514055?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/41qwcGl5ghL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Programming Ruby: The Pragmatic Programmers' Guide, Second Edition&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Dave Thomas, Chad Fowler, Andy Hunt&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;243314&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$44.95&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Computers &amp;amp; Internet&quot;, &quot;Programming&quot;, &quot;Ajax&quot;, &quot;Assembly Language Programming&quot;, &quot;Borland Delphi&quot;, &quot;CSS&quot;, &quot;Compiler Design&quot;, &quot;Compilers&quot;, &quot;Fortran&quot;, &quot;Lisp&quot;, &quot;Prolog&quot;, &quot;Python&quot;, &quot;Visual Basic&quot;, &quot;XHTML&quot;, &quot;XML&quot;, &quot;Languages &amp;amp; Tools&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/8590379825?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/41AAqXJ7jgL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Programming in Lua, Second Edition&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Roberto Ierusalimschy&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;11645&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$39.95&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Computers &amp;amp; Internet&quot;, &quot;Programming&quot;, &quot;Ajax&quot;, &quot;Assembly Language Programming&quot;, &quot;Borland Delphi&quot;, &quot;CSS&quot;, &quot;Compiler Design&quot;, &quot;Compilers&quot;, &quot;Fortran&quot;, &quot;Lisp&quot;, &quot;Prolog&quot;, &quot;Python&quot;, &quot;Visual Basic&quot;, &quot;XHTML&quot;, &quot;XML&quot;, &quot;Languages &amp;amp; Tools&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/1934356379?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/51tFzC0fFZL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;The RSpec Book: Behaviour Driven Development with Rspec, Cucumber, and Friends (The Facets of Ruby Series)&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Chelimsky, Astels, Helmkamp, North, Dennis, Hellesoy&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;20725&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$38.95&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Business &amp;amp; Investing&quot;, &quot;Management &amp;amp; Leadership&quot;, &quot;Quality Control&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/1934356646?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/41SdqNBZbcL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Rails Test Prescriptions (Pragmatic Programmers)&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Noel Rappin&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;161469&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$34.95&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Computers &amp;amp; Internet&quot;, &quot;Programming&quot;, &quot;Ajax&quot;, &quot;Assembly Language Programming&quot;, &quot;Borland Delphi&quot;, &quot;CSS&quot;, &quot;Compiler Design&quot;, &quot;Compilers&quot;, &quot;Fortran&quot;, &quot;Lisp&quot;, &quot;Prolog&quot;, &quot;Python&quot;, &quot;Visual Basic&quot;, &quot;XHTML&quot;, &quot;XML&quot;, &quot;Languages &amp;amp; Tools&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/0201485672?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/51T4YZ3HieL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Refactoring: Improving the Design of Existing Code&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Fowler, Beck, Brant, Opdyke, Roberts&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;3544&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$64.99&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Computers &amp;amp; Internet&quot;, &quot;Computer Science&quot;, &quot;Software Engineering&quot;, &quot;Design Tools &amp;amp; Techniques&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/0321657292?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/41xhA5EwnyL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Rocket Surgery Made Easy: The Do-It-Yourself Guide to Finding and Fixing Usability Problems&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Steve Krug&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;5546&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$35.00&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Computers &amp;amp; Internet&quot;, &quot;Web Development&quot;, &quot;Dreamweaver&quot;, &quot;Fireworks&quot;, &quot;Flash&quot;, &quot;Web Graphics&quot;, &quot;Web Design&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.amazon.com/dp/0321743121?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/51fHlS9vK2L._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Ruby on Rails 3 Tutorial: Learn Rails by Example (Addison-Wesley Professional Ruby Series)&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Michael Hartl&lt;/p&gt;
+    &lt;p class=&quot;salesrank&quot;&gt;4228&lt;/p&gt;
+    &lt;p class=&quot;price&quot;&gt;$39.99&lt;/p&gt;
+    &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Computers &amp;amp; Internet&quot;, &quot;Programming&quot;, &quot;Ajax&quot;, &quot;Assembly Language Programming&quot;, &quot;Borland Delphi&quot;, &quot;CSS&quot;, &quot;Compiler Design&quot;, &quot;Compilers&quot;, &quot;Fortran&quot;, &quot;Lisp&quot;, &quot;Prolog&quot;, &quot;Python&quot;, &quot;Visual Basic&quot;, &quot;XHTML&quot;, &quot;XML&quot;, &quot;Languages &amp;amp; Tools&quot;]&lt;/p&gt;
+  &lt;/div&gt;
+
+  &lt;div class=&quot;book&quot;&gt;
+    &lt;a href=&quot;http://www.manning.com/suereth/&quot;&gt;&lt;img src=&quot;http://www.manning.com/suereth/suereth_cover150.jpg&quot;/&gt;&lt;/a&gt;
+    &lt;h2 class=&quot;title&quot;&gt;Scala in Depth&lt;/h2&gt;
+    &lt;p class=&quot;author&quot;&gt;Joshua D. Suereth&lt;/p&gt;
+        &lt;p class=&quot;salesrank&quot;&gt;99999&lt;/p&gt;
+        &lt;p class=&quot;price&quot;&gt;$29.99&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;book&quot;&gt;
+        &lt;a href=&quot;http://www.amazon.com/dp/067232699X?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/51ZFYH5mqlL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+        &lt;h2 class=&quot;title&quot;&gt;Scalable Internet Architectures&lt;/h2&gt;
+        &lt;p class=&quot;author&quot;&gt;Theo Schlossnagle&lt;/p&gt;
+        &lt;p class=&quot;salesrank&quot;&gt;148880&lt;/p&gt;
+        &lt;p class=&quot;price&quot;&gt;$49.99&lt;/p&gt;
+        &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Computers &amp;amp; Internet&quot;, &quot;Home Computing&quot;, &quot;Online Searching&quot;, &quot;Internet&quot;]&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;book&quot;&gt;
+        &lt;a href=&quot;http://www.amazon.com/dp/0441783589?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/51T3Iwe0YZL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+        &lt;h2 class=&quot;title&quot;&gt;Starship Troopers&lt;/h2&gt;
+        &lt;p class=&quot;author&quot;&gt;Robert A. Heinlein&lt;/p&gt;
+        &lt;p class=&quot;salesrank&quot;&gt;7328&lt;/p&gt;
+        &lt;p class=&quot;price&quot;&gt;$9.99&lt;/p&gt;
+        &lt;p class=&quot;subjects&quot;&gt;[]&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;book&quot;&gt;
+        &lt;a href=&quot;http://www.amazon.com/dp/0192801422?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/514BKFJvqqL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+        &lt;h2 class=&quot;title&quot;&gt;To Mock a Mockingbird: And Other Logic Puzzles&lt;/h2&gt;
+        &lt;p class=&quot;author&quot;&gt;Raymond M. Smullyan&lt;/p&gt;
+        &lt;p class=&quot;salesrank&quot;&gt;243089&lt;/p&gt;
+        &lt;p class=&quot;price&quot;&gt;$16.50&lt;/p&gt;
+        &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Entertainment&quot;, &quot;Puzzles &amp;amp; Games&quot;]&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;book&quot;&gt;
+        &lt;a href=&quot;http://www.amazon.com/dp/0596520123?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/41CJrtv%2BS1L._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+        &lt;h2 class=&quot;title&quot;&gt;Version Control with Git: Powerful Tools and Techniques for Collaborative Software Development&lt;/h2&gt;
+        &lt;p class=&quot;author&quot;&gt;Jon Loeliger&lt;/p&gt;
+        &lt;p class=&quot;salesrank&quot;&gt;74199&lt;/p&gt;
+        &lt;p class=&quot;price&quot;&gt;$34.99&lt;/p&gt;
+        &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Computers &amp;amp; Internet&quot;, &quot;Computer Science&quot;, &quot;Software Engineering&quot;, &quot;Design Tools &amp;amp; Techniques&quot;]&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;book&quot;&gt;
+        &lt;a href=&quot;http://www.amazon.com/dp/1592579671?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/51v-ThhvC-L._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+        &lt;h2 class=&quot;title&quot;&gt;The Wealthy Freelancer: 12 Secrets to a Great Income and an Enviable Lifestyle&lt;/h2&gt;
+        &lt;p class=&quot;author&quot;&gt;Slaunwhite, Savage, Gandia&lt;/p&gt;
+        &lt;p class=&quot;salesrank&quot;&gt;11899&lt;/p&gt;
+        &lt;p class=&quot;price&quot;&gt;$16.95&lt;/p&gt;
+        &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Business &amp;amp; Investing&quot;, &quot;Job Hunting &amp;amp; Careers&quot;, &quot;Guides&quot;]&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;book&quot;&gt;
+        &lt;a href=&quot;http://www.amazon.com/dp/0230750567?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/41%2BYyF3LeWL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+        &lt;h2 class=&quot;title&quot;&gt;What You See Is What You Get: My Autobiography&lt;/h2&gt;
+        &lt;p class=&quot;author&quot;&gt;Alan Sugar&lt;/p&gt;
+        &lt;p class=&quot;salesrank&quot;&gt;476437&lt;/p&gt;
+        &lt;p class=&quot;price&quot;&gt;$22.95&lt;/p&gt;
+        &lt;p class=&quot;subjects&quot;&gt;[Biographies]&lt;/p&gt;
+      &lt;/div&gt;
+
+      &lt;div class=&quot;book&quot;&gt;
+        &lt;a href=&quot;http://www.amazon.com/dp/0316076201?tag=hnl-20&quot;&gt;&lt;img src=&quot;http://ecx.images-amazon.com/images/I/41dRkn1rySL._SL160_.jpg&quot;/&gt;&lt;/a&gt;
+        &lt;h2 class=&quot;title&quot;&gt;What the Dog Saw: And Other Adventures&lt;/h2&gt;
+        &lt;p class=&quot;author&quot;&gt;Malcolm Gladwell&lt;/p&gt;
+        &lt;p class=&quot;salesrank&quot;&gt;1054&lt;/p&gt;
+        &lt;p class=&quot;price&quot;&gt;$16.99&lt;/p&gt;
+        &lt;p class=&quot;subjects&quot;&gt;[&quot;Books&quot;, &quot;Subjects&quot;, &quot;Accounting&quot;, &quot;Biography &amp;amp; History&quot;, &quot;Business Life&quot;, &quot;Economics&quot;, &quot;Finance&quot;, &quot;Industries &amp;amp; Professions&quot;, &quot;International&quot;, &quot;Investing&quot;, &quot;Job Hunting &amp;amp; Careers&quot;, &quot;Management &amp;amp; Leadership&quot;, &quot;Marketing &amp;amp; Sales&quot;, &quot;Organizational Behavior&quot;, &quot;Personal Finance&quot;, &quot;Popular Economics&quot;, &quot;Real Estate&quot;, &quot;Reference&quot;, &quot;Skills&quot;, &quot;Small Business &amp;amp; Entrepreneurship&quot;, &quot;Women &amp;amp; Business&quot;, &quot;Business &amp;amp; Investing&quot;]&lt;/p&gt;
+      &lt;/div&gt;
+
+    &lt;/div&gt;
+
+    &lt;script type=&quot;text/javascript&quot;&gt; 
+      var currentLayout = 'fitRows';
+
+      $('#layouts a').click(function(){
+          var layoutName = $(this).attr('href').slice(1);
+          $list.removeClass( currentLayout ).addClass( layoutName );
+          currentLayout = layoutName;
+          $list.isotope({ layoutMode : layoutName });
+          return false;
+          });
+// switches selected class on buttons
+$('#options').find('.option-set a').click(function(){
+    var $this = $(this);
+
+    // don't proceed if already selected
+    if ( !$this.hasClass('selected') ) {
+    $this.parents('.option-set').find('.selected').removeClass('selected');
+    $this.addClass('selected');
+    }
+
+    });
+  &lt;/script&gt;
+</content>
+ </entry>
+ 
+ <entry>
    <title>Hello Jekyll</title>
-   <link href="http://tom.preston-werner.com/2011/03/17/hello-jekyll.html"/>
+   <link href="http://www.kaledavis.com/2011/03/17/hello-jekyll.html"/>
    <updated>2011-03-17T00:00:00-04:00</updated>
-   <id>http://tom.preston-werner.com/2011/03/17/hello-jekyll</id>
+   <id>http://www.kaledavis.com/2011/03/17/hello-jekyll</id>
    <content type="html">&lt;p&gt;I finally finished what I had wanted to do several years ago when I first read about &lt;a href=&quot;https://github.com/mojombo/jekyll&quot;&gt;jekyll&lt;/a&gt;, a ruby static site generator created by Tom Preston-Werner (Cofounder of GitHub). The delay was mainly from just not using my site, but then I realized that was probably because it was such a pain to post something on my old WordPress site.&lt;/p&gt;
 
 &lt;p&gt;So here it is with a new design and no comments. I'm keeping everything simple and really focusing on just content this time around. I'm not even importing over all my previous posts, but rather just the few that still get some traffic as of today.&lt;/p&gt;
@@ -27,35 +783,21 @@
  
  <entry>
    <title>Exporting Data From MongoHQ</title>
-   <link href="http://tom.preston-werner.com/2010/07/21/exporting-data-from-mongohq.html"/>
+   <link href="http://www.kaledavis.com/2010/07/21/exporting-data-from-mongohq.html"/>
    <updated>2010-07-21T00:00:00-04:00</updated>
-   <id>http://tom.preston-werner.com/2010/07/21/exporting-data-from-mongohq</id>
+   <id>http://www.kaledavis.com/2010/07/21/exporting-data-from-mongohq</id>
    <content type="html">
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;mongodump -h temple.mongohq.com:27043 -d database_name -u username -p password -o location_to_copy_to
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-
-
 </content>
  </entry>
  
  <entry>
    <title>Killing Windows Services that hang on "STOPPING"</title>
-   <link href="http://tom.preston-werner.com/2009/12/23/killing-windows-services-that-hang-on-stopping.html"/>
+   <link href="http://www.kaledavis.com/2009/12/23/killing-windows-services-that-hang-on-stopping.html"/>
    <updated>2009-12-23T00:00:00-05:00</updated>
-   <id>http://tom.preston-werner.com/2009/12/23/killing-windows-services-that-hang-on-stopping</id>
+   <id>http://www.kaledavis.com/2009/12/23/killing-windows-services-that-hang-on-stopping</id>
    <content type="html">&lt;p&gt;Although rare, sometimes a Windows Service can hang while stopping or restarting. This happened to me yesterday on one of my SharePoint servers and thought I would write-up a quick note in case I ever need it again. In my case the Office SharePoint Search Service had stopped responding and when I tried to restart the service it hung on &quot;STOPPING&quot;. A reboot would of fixed it, but that isn't an option for a production server usually.&lt;/p&gt;
 
 &lt;p&gt;First, find the service name. You can do that by looking at the properties of the particular service in services.msc. Next you can use the &lt;a href=&quot;http://technet.microsoft.com/en-us/library/bb490995.aspx&quot;&gt;SC&lt;/a&gt; command with queryex to find the PID for that service and then use &lt;a href=&quot;http://technet.microsoft.com/en-us/library/bb491009.aspx&quot;&gt;taskkill&lt;/a&gt; to kill the service.&lt;/p&gt;
-
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;sc queryex osearch
-
-taskkill /PID 2056 /F
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
 
 &lt;p&gt;&lt;em&gt;Couple notes&lt;/em&gt; - the /F flag is for forcing the service to stop. Try it first without the /F. A service hanging on &quot;STOPPING&quot; is usually a bad sign, so you may want to figure out why this is happening before doing this.&lt;/p&gt;
 </content>
@@ -63,9 +805,9 @@ taskkill /PID 2056 /F
  
  <entry>
    <title>Why SharePoint Share?</title>
-   <link href="http://tom.preston-werner.com/2009/05/26/why-sharepoint-share.html"/>
+   <link href="http://www.kaledavis.com/2009/05/26/why-sharepoint-share.html"/>
    <updated>2009-05-26T00:00:00-04:00</updated>
-   <id>http://tom.preston-werner.com/2009/05/26/why-sharepoint-share</id>
+   <id>http://www.kaledavis.com/2009/05/26/why-sharepoint-share</id>
    <content type="html">&lt;p&gt;Recently &lt;a href=&quot;http://twitter.com/jthake&quot;&gt;Jeremy Thake&lt;/a&gt; asked why &lt;a href=&quot;http://www.sharepointshare.com&quot;&gt;SharePoint Share&lt;/a&gt; (which I &lt;a href=&quot;http://kaledavis.com/2009/05/20/sharepoint-share/&quot;&gt;introduced&lt;/a&gt; a week ago)?&lt;/p&gt;
 
 &lt;blockquote&gt;&lt;p&gt;&lt;a href=&quot;http://twitter.com/jthake&quot;&gt;jthake&lt;/a&gt; &lt;a href=&quot;http://twitter.com/sharepointshare&quot;&gt;@sharepointshare&lt;/a&gt; why should we use this over using diigo or del.icio.us? take a read of http://bit.ly/7ZG07 interested in ur thoughts&lt;/p&gt;&lt;/blockquote&gt;
@@ -90,9 +832,9 @@ taskkill /PID 2056 /F
  
  <entry>
    <title>VMware Logo - 12 Signs You Are Too Big</title>
-   <link href="http://tom.preston-werner.com/2008/08/27/vmware-logo-12-signs-you-are-to-big.html"/>
+   <link href="http://www.kaledavis.com/2008/08/27/vmware-logo-12-signs-you-are-to-big.html"/>
    <updated>2008-08-27T00:00:00-04:00</updated>
-   <id>http://tom.preston-werner.com/2008/08/27/vmware-logo-12-signs-you-are-to-big</id>
+   <id>http://www.kaledavis.com/2008/08/27/vmware-logo-12-signs-you-are-to-big</id>
    <content type="html">&lt;p&gt;I was downloading the VMware player today and noticed this &lt;a href=&quot;http://www.vmware.com/help/usage.html&quot;&gt;agreement&lt;/a&gt; just to download the logo to link back to their site.  How does stuff like this happen?&lt;/p&gt;
 
 &lt;ul&gt;
@@ -115,9 +857,9 @@ taskkill /PID 2056 /F
  
  <entry>
    <title>Links - "Some Favorite Sites, Vol 1"</title>
-   <link href="http://tom.preston-werner.com/2007/10/21/links-some-favorite-sites-vol-1.html"/>
+   <link href="http://www.kaledavis.com/2007/10/21/links-some-favorite-sites-vol-1.html"/>
    <updated>2007-10-21T00:00:00-04:00</updated>
-   <id>http://tom.preston-werner.com/2007/10/21/links-some-favorite-sites-vol-1</id>
+   <id>http://www.kaledavis.com/2007/10/21/links-some-favorite-sites-vol-1</id>
    <content type="html">&lt;p&gt;Through the course of a day I browse to a lot of sites.  I bookmark a large number of those, and probably revisited a small portion of the sites using them.  Where does that leave me?  I don't really know...that would require more browsing.  So here is couple of the ones that I do look at on a weekly basis:&lt;/p&gt;
 
 &lt;ul&gt;
@@ -134,9 +876,9 @@ taskkill /PID 2056 /F
  
  <entry>
    <title>Incorrect syntax near 'WSSList' in dbSPSReporting.sql</title>
-   <link href="http://tom.preston-werner.com/2007/06/11/incorrect-syntax-near-wsslist-in-dbspsreportingsql.html"/>
+   <link href="http://www.kaledavis.com/2007/06/11/incorrect-syntax-near-wsslist-in-dbspsreportingsql.html"/>
    <updated>2007-06-11T00:00:00-04:00</updated>
-   <id>http://tom.preston-werner.com/2007/06/11/incorrect-syntax-near-wsslist-in-dbspsreportingsql</id>
+   <id>http://www.kaledavis.com/2007/06/11/incorrect-syntax-near-wsslist-in-dbspsreportingsql</id>
    <content type="html">&lt;p&gt;Have you tried to use the &lt;a href=&quot;http://www.microsoft.com/downloads/details.aspx?familyid=d81722ce-408c-4fb6-a429-2a7ecd62f674&amp;amp;displaylang=en&quot;&gt;SQL Server 2005 Report Pack for SPS&lt;/a&gt;? I had used the previous version of this for SQL 2000 last year, but hadn't used it for a while. I remember having issues with the install of that previous version, and sure enough I had more issues this time as well.&lt;/p&gt;
 
 &lt;p&gt;Here is the error message you will see when you run the dbSPSReporting.sql script:&lt;/p&gt;
@@ -149,24 +891,15 @@ successfully executed until the table exists.
 
 &lt;p&gt;The problem is there is a missing comma after WSSDoc nvarchar(255):&lt;/p&gt;
 
-&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;sql&quot;&gt;&lt;span class=&quot;k&quot;&gt;Create&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;table&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dbo&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;tblTempWSS_ToFactLoad&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WSSFactID&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;bigint&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;identity&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;not&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;Primary&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;Key&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; 
-  &lt;span class=&quot;n&quot;&gt;SiteGUID&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uniqueidentifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WebGUID&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uniqueidentifier&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;-- WSSDate datetime, -- Fix for &lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;Bug&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;403546&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WSSDate&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;smalldatetime&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WSSTime&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nvarchar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;8&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;--WSSUser nvarchar(150), --Fix &lt;/span&gt;
-  &lt;span class=&quot;k&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Bug&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;#&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;403546&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WSSUser&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nvarchar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;--WSSDoc nvarchar(50), --Fix for Bug #: 403546 &lt;/span&gt;
-  &lt;span class=&quot;n&quot;&gt;WSSDoc&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;nvarchar&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;255&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WSSList&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;uniqueidentifier&lt;/span&gt;
-&lt;/code&gt;&lt;/pre&gt;
-&lt;/div&gt;
-
-
 &lt;p&gt;Simply add the comma before you run the SQL script and everything will work fine. I find it very ironic that the new bug is right below the &quot;Fix for Bug&quot; comment that dealt with the previous problems in the first version. Bugs often introduce other bugs, but you would think something released for a Windows administrator would be checked a little closer. &lt;/p&gt;
 </content>
  </entry>
  
  <entry>
    <title>The exception unknown software exception (a.k.a. SysFader)</title>
-   <link href="http://tom.preston-werner.com/2007/03/15/the-exception-unknown-software-exception.html"/>
+   <link href="http://www.kaledavis.com/2007/03/15/the-exception-unknown-software-exception.html"/>
    <updated>2007-03-15T00:00:00-04:00</updated>
-   <id>http://tom.preston-werner.com/2007/03/15/the-exception-unknown-software-exception</id>
+   <id>http://www.kaledavis.com/2007/03/15/the-exception-unknown-software-exception</id>
    <content type="html">&lt;blockquote&gt;&lt;p&gt;&lt;strong&gt;Update 7/10/07&lt;/strong&gt;: kerwin left a comment about a new KB article and hotfix that Microsoft just released.  We tested it yesterday on a machine with both 2003 and 2007 Office components and it seemed to fix the error.  Note that although both the article and hotfix specify WSS 3.0 / MOSS 2007, it also should work with 2.0/2003 (which makes sense, this is a client issue). Thanks kerwin for the information and to all the other people who left helpful comments.&lt;/p&gt;&lt;/blockquote&gt;
 
 &lt;p&gt;You have to enjoy that helpful IE7 error message right?  This past Monday I started getting an error everytime I tried to open an Office document from SharePoint 2003 (to be specific, a WSS 2.0 Team Site).&lt;/p&gt;
@@ -186,9 +919,9 @@ The funny part is none of these blogs mentioned the error message (maybe they we
  
  <entry>
    <title>Using CRM with a SQL named instance</title>
-   <link href="http://tom.preston-werner.com/2006/12/30/using-crm-with-a-sql-named-instance.html"/>
+   <link href="http://www.kaledavis.com/2006/12/30/using-crm-with-a-sql-named-instance.html"/>
    <updated>2006-12-30T00:00:00-05:00</updated>
-   <id>http://tom.preston-werner.com/2006/12/30/using-crm-with-a-sql-named-instance</id>
+   <id>http://www.kaledavis.com/2006/12/30/using-crm-with-a-sql-named-instance</id>
    <content type="html">&lt;p&gt;If you want to use CRM 3.0 with a named SQL instance you first have to disable the Environmental Diagnostics Wizard (EDW).  How to do this?  I couldn't find a way except for a couple &lt;a title=&quot;Mid-Atlantic CRM&quot; href=&quot;http://blogs.msdn.com/midatlanticcrm/archive/2006/06/23/Name-your-Instance-SQL-Instance-that-is-in-Microsoft-CRM-3.aspx&quot;&gt;blogs&lt;/a&gt;/&lt;a title=&quot;CRM Newsgroup&quot; href=&quot;http://groups.google.com/group/microsoft.public.crm.deployment/browse_thread/thread/31c06c54730988df/a3f41f7a480543d4%23a3f41f7a480543d4&quot;&gt;newsgroups&lt;/a&gt; pointing me to a support call with Microsoft.  The Microsoft CRM Support Team might not like me posting this simple solution, but I think it is crazy that we got charged a support call for something like this and hopefully my post can prevent someone else from being on hold for two hours.&lt;/p&gt;
 
 &lt;p&gt;To disable it, you simply open RegEdit on the CRM server, browse to the MSCRM key at HKEY_LOCAL_MACHINE -&gt; SOFTWARE -&gt; Microsoft -&gt; MSCRM and add the DWORD &quot;IgnoreChecks&quot; and give a value of 1.&lt;/p&gt;
