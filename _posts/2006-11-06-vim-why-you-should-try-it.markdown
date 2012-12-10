@@ -1,5 +1,5 @@
 --- 
-published: false
+published: true
 layout: post
 title: Vim - Why you should try it
 ---
