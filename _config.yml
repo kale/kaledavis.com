@@ -1,3 +1,4 @@
 markdown: kramdown
 kramdown:
   use_coderay: true
+permalink: date
